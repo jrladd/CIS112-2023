@@ -1,13 +1,13 @@
 ---
 layout: splash
-title: "Information Technology and Society"
+title: "Database Concepts"
 header:
   overlay_color: "#000"
-  overlay_filter: "0.4"
-  overlay_image: /assets/images/eniac.png
-  caption: "Marlyn Meltzer and Ruth Teitelbaum reprogram ENIAC in 1946. Photo credit: [**Wikimedia Commons**](https://commons.wikimedia.org/wiki/File:Reprogramming_ENIAC.png)"
+  overlay_filter: "0.6"
+  overlay_image: /assets/images/bus_cloud_database.png
+  caption: "Image cropped from Jason Baker, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)"
   actions:
-    - label: "Schedule & Readings"
+    - label: "Schedule"
       url: "/schedule/"
     - label: "Assignments"
       url: "/assignments/"
@@ -15,26 +15,27 @@ header:
       url: "/policies/"
     - label: "Sakai"
       url: "https://sakai.washjeff.edu"
-excerpt: "CIS 100. Washington & Jefferson College. Spring 2023."
+excerpt: "CIS 112. Washington & Jefferson College. Fall 2023."
 ---
 
-**Meeting Time: MWF 10:20-11:30am (see Sakai for group meeting times)**  
+**Meeting Time: MWF 10:20-11:30am**  
 
-Dr. Ladd's Student Drop-In Hours: M 11:30am-1:30pm & W 1-3pm in TECH 201  
+Dr. Ladd's Student Drop-In Hours: M 11:30am-1:30pm & Tu 2-4pm in TECH 201  
 or email for appointment, [jladd@washjeff.edu](mailto:jladd@washjeff.edu)
+
+PAL Tutoring Hours: 7-10pm Sunday–Thursday in the CIS Lounge (TECH 217)
 
 ## Course Description
 
-How have information technologies shaped our society? How has societal change affected the development of new technologies?
+Databases power so much of our daily lives: your school records are kept in a database, the social media posts you create are recorded and tracked in databases, and your bank keeps your balance and transactions in a database. They are an essential tool for organizing and sharing information across large systems.
 
-In this survey of the history of technology, we will examine information technology innovations that changed society in fundamental ways. Topics within the history of information technology include the development of the integrated circuit, the personal computer, the Internet and the World Wide Web, etc. Topics within the history of technology (broadly defined) include ethical, legal, environmental, and feminist issues involved in the development and implementation of new technologies. The course entails a combination of historical overview and a number of individual case studies of technology development and implementation. The latter will focus on issues of leadership, the identification and solution of complex problems, and the unexpected consequences of technological advances.
+This course will provide an overview of the role of databases within a variety of academic, business, and governmental organizations, and an introduction to database design and management. You will create databases related to your major fields or secondary course of study using both small business and enterprise-class database management systems.
 
 ## Learning Goals
 
 At the end of this course, you will be able to:
 
-- Describe the role of computing technologies in solving problems of storing, retrieving, transmitting, and analyzing information
-- Understand today’s information technologies within the context of historical efforts to communicate knowledge and solve problems
-- Critically evaluate the claims of new technologies that seek to improve daily life
-- Describe the role of the individual technology “leader” in the process of societal change
-- Write about computing technologies and their significance in an informative manner to a non-technical audience.
+- Describe and identify the functions of a Database Management System in both design and management
+- Understand the fundamental concepts ubiquitous to Database Management Systems
+- Create databases using common languages and management systems such as SQL and Postgres
+- Design and develop complex database systems using common data forms and normalization techniques

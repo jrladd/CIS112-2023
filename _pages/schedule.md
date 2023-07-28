@@ -9,15 +9,9 @@ sidebar:
 
 ## Books and Materials
 
-Ceruzzi, Paul E. *Computing: A Concise History*. MIT Press, 2012.  
-Postman, Neil. *Technopoly: The Surrender of Culture to Technology*. New York: Vintage, 1992.
-Sloan, Robin. *Mr. Penumbra's 24-Hour Bookstore*. New York: Picador, 2013.
-
-Additional readings linked below or available on Sakai.
+There are no required texts for this course. Consider this resource (from the B.C. Open Textbook Collection) for supplemental reading: [Database Design – 2nd Edition](https://opentextbc.ca/dbdesign01/open/download?type=pdf), by Adrienne Watt and Nelson Eng.
 
 ## Class Schedule
-
-**On days marked as "All," we will all meet for the entire class time. On days marked as "Group" (most Wednesdays), we will meet in smaller groups for half the class period. See Sakai for your assigned group time.**
 
 Date|Readings|Discussion
 --|----|--
