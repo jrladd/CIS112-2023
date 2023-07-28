@@ -1,0 +1,9 @@
+main:
+  - title: "Schedule & Readings"
+    url: /schedule/
+  - title: "Assignments"
+    url: /assignments/
+  - title: "Course Policies"
+    url: /policies/
+    #- title: "Credits"
+    #url: /credits/
