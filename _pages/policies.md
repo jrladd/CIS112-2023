@@ -8,16 +8,14 @@ toc: true
 
 ### Preparation and Pacing
 
-This class is a broad overview of the history of information and technology. We will cover a lot of material during the semester, and you will have many opportunities to discuss complex ideas with your peers and think about many of the core questions of information studies. Some of you may be entering the classroom with more advanced prior knowledge of these topics, while others may be encountering these concepts for the first time. Group learning and discussion are key aspects of this course. This means that we all need to do our part to be prepared for each class, and to foster a positive and inquisitive learning environment.
+ We will cover a lot of material during the semester, and you will have many opportunities to discuss complex ideas with your peers. Some of you may be entering the classroom with more advanced prior knowledge of databases and related topics, while others may be encountering these concepts for the first time. Group learning and discussion are key aspects of this course. This means that we all need to do our part to be prepared for each class, and to foster a positive and inquisitive learning environment.
 
 In between classes you should:
 
 - Review your notes from previous classes
 - Read the assigned readings for that day
-- Refer to this site for updates to the [schedule](/CIS100/schedule)
-- Leave yourself enough time to read and respond to discussion board posts
-- DO NOT wait until the last minute to begin your essays
-- Revise and proofread your writing before turning it in
+- Refer to this site for updates to the [schedule](/CIS112/schedule)
+- DO NOT wait until the last minute to begin your assignments
 - EMAIL your instructor with any questions. Ask lots of questions!
 
 Each class must create its own learning community as the result of shared efforts on the part of all members. It is your responsibility as a member of this learning community to help your fellow students by attending class and turning in assignments on time. If you must miss a class or turn in an assignment late, please let me know beforehand so that we may work out a way for you to make up the work. You do *not* need a doctor's note or other written excuse, but please let me know if there are special circumstances that may prevent you from completing a large amount of coursework.
@@ -52,13 +50,13 @@ All assignments are due by the start of each class. I know that things don't alw
 
 However, you **must ask for the extension *at least* 24 hours before the assignment deadline**. When you email about an extension, please propose a new deadline for the assignment (a good rule of thumb is 2 or 3 days after the original deadline). Any work received late without an agreed-upon extension will be penalized one point per day.
 
-But keep in mind: **I cannot accept any assignment more than one week late.** Assignments more than one week late will receive a 0.
+But keep in mind: **I cannot accept any assignment more than one week late.** This a fast-moving course, and I want to ensure that everyone stays on track. Assignments more than one week late will receive a 0.
 
 ### Academic Honesty and Integrity
 
 In this course, as in all courses, you are expected to adhere to W&J's standards of academic honesty and integrity. You should refer to the College Catalog on MyW&J for the details of this policy and how cases of academic misconduct are handled.
 
-In general, when completing writing assignments, ensure all work is your own, and give credit where it is due in your citations. Likewise do not collaborate on quizzes, tests, or homework assignments unless explicitly granted permission. If you have any concerns about whether you might have plagiarized (e.g., if you’re not sure about some particular rule), please get in touch with me immediately---I will gladly discuss the matter with you.
+In general, when completing writing and coding assignments, ensure all work is your own, and give credit where it is due in your citations. Likewise do not collaborate on quizzes, tests, or homework assignments unless explicitly granted permission. If you have any concerns about whether you might have plagiarized (e.g., if you’re not sure about some particular rule), please get in touch with me immediately---I will gladly discuss the matter with you.
 
 ### Names and Pronouns
 
@@ -94,9 +92,9 @@ All documents provided to you (i.e. syllabus, paper prompts, tests, etc...) are 
 
 ### Inclusion and Diversity
 
-This course is open to anyone interested in the history of information and technology. It is my intent to make all students feel welcome and served in this course by addressing their learning needs. We all (including myself) are continuously learning about different lived experiences and in this course we will encounter anti-racist pedagogy and confront inequities in how information and technology are created, shared, and used. In this course, if you encounter anything said (intentionally or unintentionally) that made you feel uncomfortable, please talk to me about it. If your learning is impacted by your background, or any life event going on outside of class, feel free to talk to me. Even if you choose not to share details, I would be happy to direct you to the right resources on campus.
+This course is open to anyone interested in databases and related technologies. It is my intent to make all students feel welcome and served in this course by addressing their learning needs. We all (including myself) are continuously learning about different lived experiences. In this course, if you encounter anything said (intentionally or unintentionally) that made you feel uncomfortable, please talk to me about it. If your learning is impacted by your background, or any life event going on outside of class, feel free to talk to me. Even if you choose not to share details, I would be happy to direct you to the right resources on campus.
 
-This semester we will address topics which may be emotionally difficult. I acknowledge that each of you has their own specific life history, family context, identity, body—and that these realities have an impact on how you understand and interact with our course materials. Therefore, I ask you to generally familiarize yourself with the content of our discussions ahead of time, and if for any reason you believe you will be unable to participate in a discussion of certain themes or elements, please contact me beforehand and/or seek the support of any of the formal or informal resources available to you on campus, some of which are included in this syllabus. I look forward to creating a safe learning environment together this semester!
+I acknowledge that each of you has their own specific life history, family context, identity, body—and that these realities have an impact on how you understand and interact with our course materials. Therefore, I ask you to generally familiarize yourself with the content of our discussions ahead of time, and if for any reason you believe you will be unable to participate in a discussion of certain themes or elements, please contact me beforehand and/or seek the support of any of the formal or informal resources available to you on campus, some of which are included in this syllabus. I look forward to creating a safe learning environment together this semester!
 
 ## Grading Scale
 
