@@ -16,13 +16,13 @@ There are no required texts for this course. Consider this resource (from the B.
 Topic|Assignment|Due Date
 --|----|--
 **Data Forms, Organization, and Normalization**|
-|Exam 1|**ADD DATE**
-|Project 1|**ADD DATE**
-**SQL as a data definition language (DDL) and a data manipulation language (DML)**|
+|Exam 1|Friday 15 Sept.
+|Project 1|Friday 22 Sept.
+**What is SQL?**|
 **Query building and Database Management Systems**|
-|Exam 2|**ADD DATE**
-|Project 2|**ADD DATE**
+|Exam 2|Friday 20 Oct.
+|Project 2|Friday 27 Oct.
 **Database design and documentation**|
-|Exam 3|**ADD DATE**
-|Project 3|**ADD DATE**
+|Exam 3|TBD
+|Project 3|Monday 4 Dec.
 
