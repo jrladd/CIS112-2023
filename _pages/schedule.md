@@ -13,6 +13,8 @@ There are no required texts for this course. Consider this resource (from the B.
 
 ## Class Schedule
 
+*n.b. This schedule includes only major exam dates and project due dates. Remember to refer to the assignment prompts for the complete list of weekly checkpoints!*
+
 Topic|Assignment|Due Date
 --|----|--
 **Data Forms, Organization, and Normalization**|
