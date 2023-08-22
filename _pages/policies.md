@@ -22,15 +22,9 @@ Each class must create its own learning community as the result of shared effort
 
 ### Attendance & Participation
 
-Good participation should be understood as consistent and thoughtful contribution to the classroom community, an engagement with course materials and conversations, and a general responsiveness to (and respect for) one’s fellow students and instructor. This isn’t an accounting of how often you speak in class. Instead, it’s about what you offer to the intellectual life of the class, and everyone contributes to this on-going work in different ways.
+Good participation should be understood as consistent and thoughtful contribution to the classroom community, an engagement with course materials and conversations, and a general responsiveness to (and respect for) one’s fellow students and instructor. This isn’t an accounting of how often you speak in class. Instead, it’s about what you offer to the intellectual life of the class, and everyone contributes to this on-going work in different ways. Particularly because so much of the class will consist of hands-on work, you’ll get participation credit simply for attending class and doing the work with care.
 
-You'll get participation credit simply for attending class and doing the work with care. Some days the full class will meet for the entire time, and other days we will meet in groups for only part of the class. You are responsible to attend all of your group times as well as all of the full-class sessions.
-
-**You can miss 5 class sessions without penalty, and you don't need to contact me if you have missed or will miss a class**. This is a generous policy that should cover absences due to illness, sports, academic trips, interviews, etc. If you have a special case, such as having to isolate due to COVID, contact me as soon as possible.
-
-However, if you miss more than 5 classes, you will be marked down one grade "step" for each additional class missed. (For example, if you miss six classes and your final grade is 90% (A-), your sixth absence will cause you to have a B+ instead.) There are no “excused” absences, so you do not need to contact me if you have missed or will miss a class. You will be marked absent regardless of your reason for missing class.
-
-Though you're not required to, you can always reach out to me or a classmate to find out what you missed. We're all in this together, and I'll do my best to make sure no one falls behind.
+Attending class is not optional: regular attendance is necessary to succeed in this course. Each day will have new content, activities, and learning opportunities. You'll want to attend as much as possible to avoid falling behind. **If you have to miss class for any reason, please let me know in advance**, especially if you have to miss more than one class in a row. Missing class is not an excuse for missing assignment deadlines, being unprepared for the next class session, or falling behind on the daily quizzes. You are responsible for keeping up-to-date with the work of the course or for communicating with me about unexpected circumstances which change your ability to do so. You can always reach out to me or a classmate to find out what you missed. We're all in this together, and I'll do my best to make sure no one falls behind.
 
 #### Longer Absences
 
