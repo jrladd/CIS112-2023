@@ -26,14 +26,6 @@ Good participation should be understood as consistent and thoughtful contributio
 
 Attending class is not optional: regular attendance is necessary to succeed in this course. Each day will have new content, activities, and learning opportunities. You'll want to attend as much as possible to avoid falling behind. **If you have to miss class for any reason, please let me know in advance**, especially if you have to miss more than one class in a row. Missing class is not an excuse for missing assignment deadlines, being unprepared for the next class session, or falling behind on the daily quizzes. You are responsible for keeping up-to-date with the work of the course or for communicating with me about unexpected circumstances which change your ability to do so. You can always reach out to me or a classmate to find out what you missed. We're all in this together, and I'll do my best to make sure no one falls behind.
 
-#### Longer Absences
-
-The guidelines above apply to typical short absences (missing just one class in a row and catching up on work as normal). However, I recognize that COVID and other issues may lead to an *extended* absence, when you might be out of class for several classes in a row, or even a week or more.
-
-In these cases, **it's your responsibility to contact me as soon as you know you'll be out**. Let me know how long you expect the absence to be, and we can talk through what some of the expectations will be during this time and how you will complete the work.
-
-It's important that you attend class as much as you can, but it's also important that you stay home if you're sick and get the care you need. We can work on this balance together, and if you have any questions you can always ask me!
-
 #### Instructor Absence
 
 If I have to miss class due to illness or any other reason, I will let you know as soon as possible via email. I'll also post any relevant materials on Sakai or on this website, and my email will let you know what you need to do. It's a good idea to check your email at least once a day, since that's the primary way I'll keep in touch about any changes to the schedule.
