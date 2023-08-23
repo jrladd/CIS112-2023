@@ -25,6 +25,6 @@ Topic|Assignment|Due Date
 |Exam 2|Friday 20 Oct.
 |Project 2|Friday 27 Oct.
 **Database design and documentation**|
-|Exam 3|TBD
-|Project 3|Monday 4 Dec.
+|Exam 3|**Saturday 9 Dec. 9am-12pm**
+|Project 3|**Monday 4 Dec.**
 

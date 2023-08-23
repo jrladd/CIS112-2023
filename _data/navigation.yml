@@ -5,5 +5,7 @@ main:
     url: /assignments/
   - title: "Course Policies"
     url: /policies/
+  - title: "Slides"
+    url: /slides/
     #- title: "Credits"
     #url: /credits/
