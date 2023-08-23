@@ -35,3 +35,33 @@ How else might you store data?
 2. A database is built for a purpose.
 3. A database is logical and internally consistent.
 4. A database is queryable.
+
+# The Relational Model
+
+## Edgar Codd
+
+![](img/codd.jpg)
+
+"A Relational Model of Data for Large Shared Data Banks," IBM Research Lab, 1970
+
+## Preserving the connections between data *independently* and *consistently*
+
+Relational databases don't depend on the way users will interface with the data, and all of the data can be easily referenced.
+
+## An example relational table
+
+![](img/relational_model.png)
+
+## Criteria for Relational Tables
+
+1. Rows contain data about an *entity*.
+2. Columns contain data about an entity's *attributes*.
+3. Fields  contain a non-empty atomic data value.
+4. Attributes conform to a specific format.
+5. Each column has a unique name.
+6. The order of rows and columns may not affect the relation.
+7. Each record must be unique, such that a set of attributes identify each entity.
+
+## Is this a relational table?
+
+![](img/relational_exercise.png)
