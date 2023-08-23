@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="DA 101, Dr. Ladd">
+  <title>R Basics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/beige.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">R Basics</h1>
+  <p class="author">DA 101, Dr. Ladd</p>
+  <p class="date">Week 2</p>
+</section>
+
+<section id="a-pirates-favorite-programming-language" class="title-slide slide level1">
+<h1><a href="https://postlight.com/insights/a-pirates-favorite-programming-language">A Pirate’s Favorite Programming Language</a></h1>
+
+</section>
+
+<section>
+<section id="whats-the-difference-between-r-and-rstudio" class="title-slide slide level1">
+<h1>What’s the Difference Between R and RStudio?</h1>
+
+</section>
+<section id="r-is-a-programming-language." class="slide level2">
+<h2>R is a programming <em>language</em>.</h2>
+<p>It’s the code you write.</p>
+<p><code>somedata &lt;- read.csv("yourfile.csv")</code></p>
+</section>
+<section id="rstudio-is-a-desktop-program." class="slide level2">
+<h2>RStudio is a desktop program.</h2>
+<p>When you “Open R”, you’re really opening RStudio.</p>
+<p><img data-src="img/rstudio_blank.png" /></p>
+</section>
+<section id="almost-all-rstudio-commands-have-equivalent-r-functions." class="slide level2">
+<h2>Almost all RStudio commands have equivalent R functions.</h2>
+<p>You set the Working Directory to tell R which folder/directory to use on your computer. You can:</p>
+<ol type="1">
+<li>Navigate to the desired folder in the Files section, then click “More &gt; Set as Working Directory” <strong><em>or</em></strong></li>
+<li>Type<br />
+<code>setwd('path/to/working_directory')</code><br />
+into the console or a .r file.</li>
+</ol>
+</section></section>
+<section>
+<section id="r-has-its-own-syntax." class="title-slide slide level1">
+<h1>R has its own syntax.</h1>
+
+</section>
+<section id="variables-store-information" class="slide level2">
+<h2>Variables store information</h2>
+<pre><code>myvar &lt;- 5
+
+myvar</code></pre>
+</section>
+<section id="you-try-it" class="slide level2">
+<h2>You Try It!</h2>
+<p>Create a variable called “newVar” that is equal to the value of five plus seven. Then display your variable to see what its value is.</p>
+</section>
+<section id="use-descriptive-variable-names-and-avoid-spaces." class="slide level2">
+<h2>Use descriptive variable names, and avoid spaces.</h2>
+<pre><code>i_use_snake_case
+otherPeopleUseCamelCase
+some.people.use.periods
+And_aFew.People_RENOUNCEconvention</code></pre>
+</section>
+<section id="add-frequent-comments-to-explain-what-your-code-does." class="slide level2">
+<h2>Add frequent comments to explain what your code does.</h2>
+<p>Comments in R begin with a <code>#</code> symbol.</p>
+<pre><code># This variable contains a continuous value
+some_variable &lt;- 2.5</code></pre>
+</section>
+<section id="variables-have-types." class="slide level2">
+<h2>Variables have types.</h2>
+<ul>
+<li>String or Character: a piece of text (ex. <code>"five"</code>)</li>
+<li>Integer: a discrete numerical value (ex. <code>5</code>)</li>
+<li>Float or Double: a continuous numerical value (ex. <code>5.0</code>)</li>
+</ul>
+<pre><code>stringvar &lt;- &quot;five&quot;
+
+typeof(stringvar)</code></pre>
+</section>
+<section id="you-can-put-reusable-code-in-r-scripts." class="slide level2">
+<h2>You can put reusable code in R scripts.</h2>
+<p>These are “.r” files, and you can create them by clicking the <code>+</code> icon at the top left of the RStudio window and selecting “R Script”.</p>
+<p>Always comment your code so you can remember things when you come back later!</p>
+</section></section>
+<section>
+<section id="data-frames-store-rectangular-data." class="title-slide slide level1">
+<h1>Data Frames store rectangular data.</h1>
+
+</section>
+<section id="usually-we-create-a-data-frame-by-reading-a-csv." class="slide level2">
+<h2>Usually we create a data frame by reading a csv.</h2>
+<pre><code>GarlicMustardData &lt;- read.csv(&quot;GarlicMustardData.csv&quot;)</code></pre>
+</section>
+<section id="there-are-standard-functions-and-syntax-for-working-with-data-frames." class="slide level2">
+<h2>There are standard functions and syntax for working with data frames.</h2>
+<pre><code># Browse a data frame with the view function.
+View(GarlicMustardData)
+
+# Get summary statistics for every column in a data frame.
+summary(GarlicMustardData)
+
+# Access a specific column of a data frame.
+GarlicMustardData$AvgAdultHeight</code></pre>
+</section>
+<section id="you-try-it-1" class="slide level2">
+<h2>You Try It!</h2>
+<p>Import the “GarlicMustardData.csv” file. Get a summary for all of the data, and then get a summary for <em>just the AvgNLeaves column</em>. Bonus: find the type of that column.</p>
+<p>n.b. Remember to make sure your working directory is set to the right place!</p>
+</section></section>
+<section>
+<section id="functions-and-libraries-store-reusable-code." class="title-slide slide level1">
+<h1>Functions and Libraries store reusable code.</h1>
+
+</section>
+<section id="a-function-is-a-command-that-runs-based-on-some-input-or-parameter." class="slide level2">
+<h2>A function is a command that runs based on some <em>input</em> or <em>parameter</em>.</h2>
+<p>R has many built-in functions.</p>
+<pre><code># Some functions give a number result
+mean(GarlicMustardData$AvgNFruits, na.rm=TRUE)
+
+# Other functions graph things
+plot(GarlicMustardData$AvgAdultHeight,GarlicMustardData$bio12)</code></pre>
+<p>Functions can do just about anything: calculate values, create graphs, transform data, etc.</p>
+</section>
+<section id="you-can-create-functions-like-you-create-variables." class="slide level2">
+<h2>You can create functions like you create variables.</h2>
+<pre><code>myfunction &lt;- function(arg1, arg2, ... ){
+statements
+return(object)
+}</code></pre>
+<p>A real example:</p>
+<pre><code>get_last_value &lt;- function(some_list){
+  return(some_list[length(some_list)])
+}</code></pre>
+</section>
+<section id="librariespackages-contain-reusable-functions-made-by-someone-else." class="slide level2">
+<h2>Libraries/Packages contain reusable functions made by someone else.</h2>
+<pre><code># Install libraries only once
+install.packages(&quot;packagename&quot;)
+
+# Load a library every time you run your code
+library(packagename)</code></pre>
+</section>
+<section id="you-try-it-2" class="slide level2">
+<h2>You Try It!</h2>
+<p>Install and load the <code>tidyverse</code> package. Then install and load the <code>swirl</code> package. Can you tell what these two packages do?</p>
+</section></section>
+<section>
+<section id="now-youre-ready-to-try-some-things-on-your-own" class="title-slide slide level1">
+<h1>Now you’re ready to try some things on your own!</h1>
+
+</section>
+<section id="in-class-exercise" class="slide level2">
+<h2>In-Class Exercise</h2>
+<ol type="1">
+<li>Create a new .R file</li>
+<li>Install and import the ggplot2 library</li>
+<li>Make sure to add comments as you go!</li>
+<li>Find the <code>mpg</code> dataset, view it, and get a summary</li>
+<li>Select a column from <code>mpg</code> and get its mean and median</li>
+<li>Create a basic scatterplot of two <code>mpg</code> variables (columns)</li>
+</ol>
+</section>
+<section id="all-this-and-more-in-chapter-4-of-our-textbook" class="slide level2">
+<h2>All this and more in <a href="https://r4ds.had.co.nz/workflow-basics.html">Chapter 4</a> of our textbook!</h2>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: false,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

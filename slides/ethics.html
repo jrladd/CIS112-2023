@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="DA 101, Dr. Ladd">
+  <title>Ethics, Bias, and Diversity in Data Analysis</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/solarized.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Ethics, Bias, and Diversity in Data Analysis</h1>
+  <p class="author">DA 101, Dr. Ladd</p>
+  <p class="date">Week 7</p>
+</section>
+
+<section>
+<section id="ethics-applies-to-every-step-of-the-da-cycle" class="title-slide slide level1">
+<h1>Ethics applies to every step of the DA cycle</h1>
+
+</section>
+<section class="slide level2">
+
+<p><img data-src="img/dataanalysiscycle.png" /></p>
+</section>
+<section id="ethics-in-data-collection-and-study-design" class="slide level2">
+<h2>Ethics in Data Collection and Study Design</h2>
+</section>
+<section id="ethics-in-visualization-and-analysis" class="slide level2">
+<h2>Ethics in Visualization and Analysis</h2>
+</section>
+<section id="ethics-in-interpretation-and-communication" class="slide level2">
+<h2>Ethics in Interpretation and Communication</h2>
+</section>
+<section id="ethics-isnt-only-about-human-subjects" class="slide level2">
+<h2>Ethics isn’t only about human subjects!</h2>
+</section></section>
+<section>
+<section id="principles-and-standards" class="title-slide slide level1">
+<h1>Principles and Standards</h1>
+
+</section>
+<section id="ethical-principles-are-general-values-that-guide-decision-making." class="slide level2">
+<h2><strong>Ethical principles</strong> are general values that guide decision making.</h2>
+<p>They are distinct from specific rules.</p>
+</section>
+<section id="ethical-standards-are-specific-applications-of-general-principles." class="slide level2">
+<h2><strong>Ethical standards</strong> are specific applications of general principles.</h2>
+<p>They are sometimes prescriptive or legally required.</p>
+</section>
+<section id="belmont-report-ethical-principles-1979" class="slide level2">
+<h2><a href="https://videocast.nih.gov/pdf/ohrp_belmont_report.pdf">Belmont Report Ethical Principles</a> (1979)</h2>
+<ul>
+<li>Respect for Persons</li>
+<li>Beneficence</li>
+<li>Justice</li>
+</ul>
+</section>
+<section id="international-statistical-institute-2010" class="slide level2">
+<h2><a href="https://www.isi-web.org/images/about/Declaration-EN2010.pdf">International Statistical Institute</a> (2010)</h2>
+<ul>
+<li>Respect</li>
+<li>Professionalism</li>
+<li>Truthfulness and Integrity</li>
+</ul>
+</section></section>
+<section>
+<section id="case-studies" class="title-slide slide level1">
+<h1>Case Studies</h1>
+
+</section>
+<section class="slide level2">
+
+<p>You are a data scientist working as a consultant with a lobbying group for XX organization. In your first consultation meeting, the group states that they are interested in having you search their data archives for “the best knock-out graphs that we can show to support our cause.” You also happen to be personally very strongly against the mission of this particular lobbying group, and even have given substantial money to a lobbying group on the other side of the political debate.</p>
+</section>
+<section class="slide level2">
+
+<p>You are working as a member of a research team on a dataset that has special restrictions on when and where it can be used. Specifically, your team has gained access to this data under the agreement that it does not leave your protected university server and the designated room you use for this purpose. Your team is running up against a serious deadline, and one of your team members has to leave town for a funeral. Feeling the pressure of the deadline, your colleague asks if she can take a de-identified subset of the data to work on remotely. She reasons that she is not taking the sensitive variables that require the restriction in the first place.</p>
+</section>
+<section class="slide level2">
+
+<p>An online social media group was designed to connect sexual assault survivors with each other across the country for support and resource sharing. Each participant is asked some basic questions about their background and experience. The group is free to join. A research team scrapes all data from the group’s online discussion threads, linked pages, and profiles in order to study network patterns in sexual violence. The research team has good intentions (to help prevent assaults) and also notes that the group does not have a legal privacy agreement preventing this kind of analysis. The team plans to make the dataset publicly available as part of their commitment to open science.</p>
+</section>
+<section class="slide level2">
+
+<p>You are a statistician for a marketing team that wants to predict pregnancies in households so that they can begin providing targeted advertisements to the home. Using data available from the consumer’s purchases at your company, you are able to create a predictive model for them. They begin sending special baby-related advertisements to these homes and find that as predicted, the strategy increases sales of baby items among those who are targeted.</p>
+</section></section>
+<section>
+<section id="bias-and-diversity" class="title-slide slide level1">
+<h1>Bias and Diversity</h1>
+
+</section>
+<section id="bias-in-data" class="slide level2">
+<h2>Bias in Data</h2>
+<p>Thinking beyond garbage in—garbage out. How do models amplify bias and problems in large datasets?</p>
+</section>
+<section id="bias-in-researchers" class="slide level2">
+<h2>Bias in Researchers</h2>
+<p>How do personal beliefs interact with good and ethical data analysis?</p>
+</section>
+<section id="bias-in-approaches" class="slide level2">
+<h2>Bias in Approaches</h2>
+<p>When do certain approaches/algorithms/models bring assumptions that embed bias?</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="CIS 241">
+  <title>Linear Regression</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/serif.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Linear Regression</h1>
+  <p class="author">CIS 241</p>
+  <p class="date">Dr. Ladd</p>
+</section>
+
+<section>
+<section id="linear-regression" class="title-slide slide level1">
+<h1>Linear Regression</h1>
+
+</section>
+<section
+id="we-can-use-correlation-coefficients-and-correlation-tests-to-learn-the-strength-of-a-relationship-but-how-do-we-learn-the-nature-of-a-relationship"
+class="slide level2">
+<h2>We can use correlation coefficients and correlation tests to learn
+the <em>strength</em> of a relationship, but how do we learn the
+<em>nature</em> of a relationship?</h2>
+</section>
+<section id="questions-we-might-want-to-answer-with-regression"
+class="slide level2">
+<h2>Questions we might want to answer with regression:</h2>
+<ul>
+<li>Does x influence y?</li>
+<li>Is crop growth rate improved by fertilizer?</li>
+<li>Do taller sprinters run faster?</li>
+</ul>
+</section>
+<section
+id="linear-prediction-models-also-called-regression-models-help-us-to-answer-these-kind-of-questions-which-explore-relationships."
+class="slide level2">
+<h2>Linear prediction models, also called regression models, help us to
+answer these kind of questions, which explore
+<em>relationships</em>.</h2>
+</section>
+<section
+id="a-prediction-model-analyzes-data-that-the-researcher-you-supplies-and-calculates-numerical-coefficients-to-help-with-prediction."
+class="slide level2">
+<h2>A <strong>prediction model</strong> analyzes data that the
+researcher (<em>you!</em>) supplies, and calculates numerical
+coefficients to help with prediction.</h2>
+</section>
+<section id="linear-regression-is-just-one-type-of-model"
+class="slide level2">
+<h2>Linear regression is just one type of model!</h2>
+</section></section>
+<section>
+<section id="how-does-linear-regression-work"
+class="title-slide slide level1">
+<h1>How does linear regression work?</h1>
+
+</section>
+<section
+id="for-many-kinds-of-data-it-is-possible-to-fit-a-line-to-a-set-of-data-points."
+class="slide level2">
+<h2>For many kinds of data, it is possible to “fit” a line to a set of
+data points.</h2>
+</section>
+<section
+id="that-line-represents-the-connection-between-an-________-x-axis-and-a-________-y-axis-variable."
+class="slide level2">
+<h2>That line represents the connection between an ________ (x-axis) and
+a ________ (y-axis) variable.</h2>
+</section>
+<section
+id="and-in-this-case-the-target-dependent-variable-is-a-function-of-the-predictor-independent-variable."
+class="slide level2">
+<h2>And in this case, the target (dependent) variable is a function of
+the predictor (independent) variable.</h2>
+</section>
+<section
+id="to-define-predictor-and-target-variables-you-need-to-use-your-human-brain."
+class="slide level2">
+<h2>To define predictor and target variables, you need to <em>use your
+human brain</em>.</h2>
+<p>Come up with a <em>rationale</em> for why you think they would be
+related.</p>
+</section>
+<section
+id="this-does-not-mean-that-x-causes-y-a-regression-cant-show-that."
+class="slide level2">
+<h2>This does <em>not</em> mean that x causes y! A regression can’t show
+that.</h2>
+<p>It’s <em>not</em> a good idea to just try to regress any set of
+variables together.</p>
+<p><strong>Correlation does not mean causation!!</strong></p>
+</section>
+<section id="regression-can-be-for-explanation-or-prediction."
+class="slide level2">
+<h2>Regression can be for <em>explanation</em> or
+<em>prediction</em>.</h2>
+</section></section>
+<section>
+<section id="calculating-simple-linear-regression"
+class="title-slide slide level1">
+<h1>Calculating simple linear regression</h1>
+
+</section>
+<section id="ymxb" class="slide level2">
+<h2><span class="math inline">\(Y=mX+b\)</span></h2>
+<p>Can also be written as: <span
+class="math inline">\(Y=b_{1}X+b_{0}\)</span></p>
+</section>
+<section id="yb_1xb_0" class="slide level2">
+<h2><span class="math inline">\(Y=b_{1}X+b_{0}\)</span></h2>
+<p><span class="math inline">\(Y\)</span> is your target (dependent)
+variable.</p>
+<p><span class="math inline">\(X\)</span> is your predictor
+(independent) variable.</p>
+</section>
+<section id="yb_1xb_0-1" class="slide level2">
+<h2><span class="math inline">\(Y=b_{1}X+b_{0}\)</span></h2>
+<p>Two coefficients:</p>
+<p><span class="math inline">\(b_{1}\)</span> (or <span
+class="math inline">\(m\)</span>) describes the <em>slope</em> of the
+line (and its direction).</p>
+<p><span class="math inline">\(b_{0}\)</span> (or <span
+class="math inline">\(b\)</span>) describes the height of the line when
+<span class="math inline">\(X\)</span> is 0. This is called the
+y-intercept or simply the intercept.</p>
+</section>
+<section
+id="we-can-provide-2-numeric-variables-x-and-y-and-python-will-calculate-the-b_0-and-b_1-values."
+class="slide level2">
+<h2>We can provide 2 numeric variables (<span
+class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span>), and Python will calculate the <span
+class="math inline">\(b_{0}\)</span> and <span
+class="math inline">\(b_{1}\)</span> values.</h2>
+<p>This is what it means to “fit” a linear model.</p>
+</section>
+<section
+id="in-theory-if-you-know-any-b_0-and-b_1-you-can-use-any-new-x-value-to-predict-a-y-value.-wow"
+class="slide level2">
+<h2>In theory, if you know any <span
+class="math inline">\(b_{0}\)</span> and <span
+class="math inline">\(b_{1}\)</span>, you can use any new X value to
+<em>predict</em> a Y value. Wow!</h2>
+</section></section>
+<section>
+<section id="linear-regression-in-python"
+class="title-slide slide level1">
+<h1>Linear regression in Python</h1>
+
+</section>
+<section id="always-start-with-exploratory-analysis."
+class="slide level2">
+<h2>Always start with exploratory analysis.</h2>
+<p>Do you have good reason to believe that a linear regression or
+predictive model would help? Is there a relationship between variables
+that’s worth learning about?</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s make a scatter plot of engine displacement and</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># fuel efficiency, in the mpg dataset.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>sns.relplot(x<span class="op">=</span><span class="st">&quot;displacement&quot;</span>,y<span class="op">=</span><span class="st">&quot;mpg&quot;</span>,data<span class="op">=</span>cars)</span></code></pre></div>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="img/mpg_scatter_regression.png"
+alt="What do you think?" />
+<figcaption aria-hidden="true">What do you think?</figcaption>
+</figure>
+</section>
+<section id="it-looks-like-there-might-be-a-linear-relationship"
+class="slide level2">
+<h2>It looks like there might be a linear relationship!</h2>
+<p>We can see a general trend: as engine size goes up, fuel efficiency
+goes down. Now we’re ready to try modeling this relationship.</p>
+</section>
+<section id="beware" class="slide level2">
+<h2>Beware!</h2>
+<figure>
+<img data-src="img/xkcd_regression.png" alt="xkcd.com/1725" />
+<figcaption aria-hidden="true">xkcd.com/1725</figcaption>
+</figure>
+</section>
+<section id="for-statistical-modeling-in-python-we-can-use-sklearn."
+class="slide level2">
+<h2>For statistical modeling in Python, we can use
+<code>sklearn</code>.</h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You only need to import the functions you will use</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This may be different every time</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span></code></pre></div>
+</section>
+<section id="the-scikit-learn-modeling-workflow" class="slide level2">
+<h2>The scikit-learn modeling workflow</h2>
+<ol type="1">
+<li>Choose your model</li>
+<li>Split the data into train and test portions</li>
+<li>Fit the model to your training data</li>
+<li>Summarize or predict based on the model</li>
+<li>Validate and assess the model</li>
+</ol>
+<p>Full scikit-learn documentation <a
+href="https://scikit-learn.org/stable/index.html">here</a></p>
+</section>
+<section id="why-do-we-split-the-data" class="slide level2">
+<h2>Why do we split the data?</h2>
+<p>A training set will determine the model’s coefficients, and a test
+set will let us see how well it works on <em>new</em> data that it
+<em>hasn’t already seen</em>.</p>
+</section>
+<section id="first-we-select-our-model-linear-regression"
+class="slide level2">
+<h2>First we select our model: linear regression</h2>
+<p>That’s why we imported the LinearRegression class above.</p>
+</section>
+<section id="then-we-split-the-data." class="slide level2">
+<h2>Then we split the data.</h2>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="st">&quot;mpg&quot;</span> <span class="co"># Our target variable</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>predictors <span class="op">=</span> [<span class="st">&quot;displacement&quot;</span>] <span class="co"># A list of predictors</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> cars[predictors]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> cars[target]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># The train_test_split() function will create 4 variables</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    X, <span class="co"># The first argument is the X variable</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    y, <span class="co"># The second argument is the Y variable</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    test_size<span class="op">=</span><span class="fl">0.4</span>, <span class="co"># Proportion of the data in the test set</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">0</span>) <span class="co"># Set a random state so it&#39;s the same every time</span></span></code></pre></div>
+</section>
+<section id="then-we-can-fit-our-model." class="slide level2">
+<h2>Then we can fit our model.</h2>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>our_model <span class="op">=</span> LinearRegression() <span class="co"># Make an instance of this class</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>our_model.fit(X_train, y_train) <span class="co"># Run the fit() method on training data</span></span></code></pre></div>
+</section>
+<section id="now-we-can-look-at-the-models-coefficients"
+class="slide level2">
+<h2>Now we can look at the model’s coefficients</h2>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We use f-strings to print complex things, with rounding</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Intercept: </span><span class="sc">{</span>our_model<span class="sc">.</span>intercept_<span class="sc">:.3f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Coefficient (Slope): </span><span class="sc">{</span>our_model<span class="sc">.</span>coef_[<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+</section>
+<section class="slide level2">
+
+<p>With a slope of <code>-0.0597</code>, this linear regression provides
+evidence that as engine displacment increases, fuel efficiency decreases
+slightly!</p>
+<p>For every additional unit of engine displacement, the expected fuel
+efficiency decreases by 0.0597.</p>
+<p>The intercept indicates that if engine displacment were 0, fuel
+efficiency would be 34.829 miles per gallon.</p>
+<p><em>Be careful not to imply that there is a direct causal link,
+especially without more evidence or studies.</em></p>
+</section>
+<section id="compare-this-to-the-regression-plot." class="slide level2">
+<h2>Compare this to the regression plot.</h2>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">&quot;displacement&quot;</span>,y<span class="op">=</span><span class="st">&quot;mpg&quot;</span>,data<span class="op">=</span>cars)</span></code></pre></div>
+<p><img data-src="img/mpg_regression_py.png" /></p>
+</section>
+<section id="all-together-now." class="slide level2">
+<h2>All together now.</h2>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="st">&quot;mpg&quot;</span> <span class="co"># Our target variable</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>predictors <span class="op">=</span> [<span class="st">&quot;displacement&quot;</span>] <span class="co"># A list of predictors</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> cars[predictors]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> cars[target]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    X, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    y, </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    test_size<span class="op">=</span><span class="fl">0.4</span>, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>our_model <span class="op">=</span> LinearRegression()</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>our_model.fit(X_train, y_train)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># View coefficients</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Intercept: </span><span class="sc">{</span>our_model<span class="sc">.</span>intercept_<span class="sc">:.3f}</span><span class="ss">&quot;</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Coefficient (Slope): </span><span class="sc">{</span>our_model<span class="sc">.</span>coef_[<span class="dv">0</span>]<span class="sc">:.4f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+</section></section>
+<section>
+<section id="assessing-your-model" class="title-slide slide level1">
+<h1>Assessing Your Model</h1>
+
+</section>
+<section id="did-our-model-do-a-good-job" class="slide level2">
+<h2>Did our model do a good job?</h2>
+</section>
+<section id="lets-predict-based-on-our-model." class="slide level2">
+<h2>Let’s <em>predict</em> based on our model.</h2>
+<p>The <code>predict()</code> method uses coefficients to calculate new
+values.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Today let&#39;s focus on in-sample prediction for validation</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fitted <span class="op">=</span> our_model.predict(X_train)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>fitted</span></code></pre></div>
+<p>We can predict with our training data (in-sample prediction) or with
+our test data (out-of-sample prediction).</p>
+</section>
+<section
+id="we-can-look-at-the-fitted-values-compared-to-the-residuals."
+class="slide level2">
+<h2>We can look at the <em>fitted values</em> compared to the
+<em>residuals</em>.</h2>
+<p>Residuals are the differences between the actual observed values and
+the ones the model predicted.</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Our in-sample residuals:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>residuals <span class="op">=</span> y_train <span class="op">-</span> fitted</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>residuals</span></code></pre></div>
+<p><small>Think of these as the “errors” that the modeling method
+produced. If the residuals are symmetrically distributed with the median
+close to zero, the model may fit the data well.</small></p>
+</section>
+<section
+id="root-mean-squared-error-measures-how-much-the-residuals-stray-from-the-fitted-values."
+class="slide level2">
+<h2>Root Mean Squared Error measures how much the residuals stray from
+the fitted values.</h2>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The raw value, in-sample</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>np.sqrt(mean_squared_error(y_train, fitted))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or neatly printed</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Root mean squared error: </span><span class="sc">{</span>np<span class="sc">.</span>sqrt(mean_squared_error(y_train, fitted))<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p>This is a good metric for comparing models.</p>
+</section>
+<section
+id="r2-shows-the-amount-proportion-of-variation-in-y-that-is-accounted-for-by-x."
+class="slide level2">
+<h2><span class="math inline">\(R^{2}\)</span> shows the amount
+(proportion) of variation in <span class="math inline">\(Y\)</span> that
+is accounted for by <span class="math inline">\(X\)</span>.</h2>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Coefficient of determination: </span><span class="sc">{</span>r2_score(y_train, fitted)<span class="sc">:.2f}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<p>This is also called the “coefficient of determination.”</p>
+<p><small><span class="math inline">\(R^{2}\)</span> ranges from 0 to 1.
+If it were 1, the variables would make a straight line. If it were 0,
+the x variable wouldn’t predict the y variable at all.</small></p>
+</section>
+<section class="slide level2">
+
+<p>In this example, <span class="math inline">\(R^{2}=0.64\)</span>, so
+engine displacement accounts for about 64% of the variation in fuel
+efficiency.</p>
+<p>There’s no rule for what makes an <span
+class="math inline">\(R^{2}\)</span> “good.” Consider the context and
+purpose of your analysis!</p>
+<p>In an analysis of ecology or human behavior (very unpredictable) an
+<span class="math inline">\(R^{2}\)</span> of 0.20 or 0.30, might be
+considered good. In an analysis predicting mechanical repairs, or
+recovery from medical procedures, an <span
+class="math inline">\(R^{2}\)</span> of 0.60 or 0.70 might be considered
+very poor.</p>
+</section></section>
+<section>
+<section id="you-try-it" class="title-slide slide level1">
+<h1>You Try It!</h1>
+
+</section>
+<section id="challenge" class="slide level2">
+<h2>Challenge</h2>
+<p>With a partner, perform a linear regression to determine how the
+number of years a worker is <em>exposed</em> to cotton dust is related
+to a measure of lung capacity: the peak expiratory flow rate.</p>
+<p>You can <a
+href="https://raw.githubusercontent.com/gedeck/practical-statistics-for-data-scientists/master/data/LungDisease.csv">download
+the data here</a>.</p>
+</section>
+<section id="follow-these-steps" class="slide level2">
+<h2>Follow these steps:</h2>
+<ol type="1">
+<li>Determine which should be your dependent and which should be your
+independent variable.</li>
+<li>Create a scatter plot with a trend line to see if you think there is
+a linear relationship. Form a hypothesis with your partner!</li>
+<li>Using <code>sklearn</code>, create a linear regression model, split
+the data, and fit the model.</li>
+<li>Interpret the coefficents of the model <em>completely and accurately
+and in terms of the data</em>.</li>
+<li>Assess your model with <span class="math inline">\(R^2\)</span> and
+<code>RMSE</code>. How did your model do?</li>
+</ol>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

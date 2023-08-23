@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="DA 101, Dr. Ladd">
+  <title>Mapping and Spatial Data</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/solarized.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Mapping and Spatial Data</h1>
+  <p class="author">DA 101, Dr. Ladd</p>
+  <p class="date">Week 8</p>
+</section>
+
+<section>
+<section id="latitude-and-longitude" class="title-slide slide level1">
+<h1>Latitude and Longitude</h1>
+
+</section>
+<section id="plot-the-earth-with-geocoordinates." class="slide level2">
+<h2>Plot the earth with geocoordinates.</h2>
+<p><img data-src="img/latlong.png" /></p>
+</section>
+<section id="geographic-data-includes-geocoordinates." class="slide level2">
+<h2>Geographic data includes geocoordinates.</h2>
+<p>Degrees, Minutes, Seconds format:<br />
+110°W 21’ 13”</p>
+<p>Decimal Degrees format:<br />
+110.353611<br />
+(+/- for N/S or W/E)</p>
+</section>
+<section id="most-mapping-software-uses-decimal-degrees" class="slide level2">
+<h2>Most mapping software uses decimal degrees!</h2>
+<p>You can always use an <a href="https://data.aad.gov.au/aadc/calc/dms_decimal.cfm">online conversion tool</a>.</p>
+</section>
+<section id="longitude-and-latitude-tell-us-the-locations-of-the-data-and-its-extent." class="slide level2">
+<h2>Longitude and Latitude tell us the locations of the data <em>and</em> its extent.</h2>
+<p>You need a “bounding box” to define the edges of your map.</p>
+<p><img data-src="img/boundingbox.png" /></p>
+<p>Find bbox coordinates online at <a href="http://bboxfinder.com/">bboxfinder.com</a>.</p>
+</section>
+<section id="maps-are-awesome.-spatial-analysis-is-hard." class="slide level2">
+<h2>Maps are awesome. Spatial analysis is hard.</h2>
+<p>Plotting points in space is only the first step.</p>
+</section></section>
+<section>
+<section id="lets-get-set-up-for-mapping-in-rstudio." class="title-slide slide level1">
+<h1>Let’s get set up for mapping in RStudio.</h1>
+
+</section>
+<section id="first-install-some-new-libraries." class="slide level2">
+<h2>First, install some new libraries.</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the console, type:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;dkahle/ggmap&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rworldmap&quot;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gapminder&quot;</span>)</span></code></pre></div>
+</section>
+<section id="then-import-those-libraries-in-a-new-rscript." class="slide level2">
+<h2>Then import those libraries in a new RScript.</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In an R Script or RMarkdown file, type:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggmap)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sp)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rworldmap)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span></code></pre></div>
+</section>
+<section id="ggmap-works-like-ggplot-and-we-can-apply-the-same-skills-to-it." class="slide level2">
+<h2>GGmap works like ggplot, and we can apply the same skills to it.</h2>
+<p>Let’s make this map together:</p>
+<p><img data-src="img/usmap.png" /></p>
+</section>
+<section id="first-we-make-a-bounding-box." class="slide level2">
+<h2>First we make a bounding box.</h2>
+<p>For the US, we can enter the bounding coordinates manually:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>usbbox <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">left =</span> <span class="sc">-</span><span class="dv">125</span>, <span class="at">bottom =</span> <span class="fl">25.75</span>, <span class="at">right =</span> <span class="sc">-</span><span class="dv">67</span>, <span class="at">top =</span> <span class="dv">49</span>)</span></code></pre></div>
+</section>
+<section id="then-we-make-a-map-object-for-ggmap-to-process." class="slide level2">
+<h2>Then we make a “map object” for ggmap to process.</h2>
+<p>We do this using ggmap’s special <code>get_stamenmap()</code> function.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>usmap <span class="ot">&lt;-</span> <span class="fu">get_stamenmap</span>(usbbox, <span class="at">zoom =</span> <span class="dv">5</span>)</span></code></pre></div>
+<p><a href="http://maps.stamen.com/#watercolor/12/37.7706/-122.3782">Stamen</a> is a map/geocoding service.</p>
+</section>
+<section id="then-just-run-ggmap" class="slide level2">
+<h2>Then, just run ggmap!</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(usmap)</span></code></pre></div>
+<p><img data-src="img/usmap.png" /></p>
+</section>
+<section id="now-you-can-play-around-and-adjust-the-features." class="slide level2">
+<h2>Now you can play around and adjust the features.</h2>
+<p>What happens if you lower the zoom value? What happens if you add a maptype to the <code>get_stamenmap()</code> function?</p>
+<p>Possible maptypes: “terrain”, “terrain-background”, “terrain-labels”, “terrain-lines”, “toner”, “toner-2010”, “toner-2011”, “toner-background”, “toner-hybrid”, “toner-labels”, “toner-lines”, “toner-lite”, “watercolor”</p>
+</section></section>
+<section>
+<section id="add-data-to-maps" class="title-slide slide level1">
+<h1>Add Data to Maps</h1>
+
+</section>
+<section id="lets-make-a-map-based-on-crime-data-in-houston-tx." class="slide level2">
+<h2>Let’s make a map based on crime data in Houston, TX.</h2>
+<p><code>ggmap</code> comes with a <code>crime</code> dataset we can use.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s filter the data to only violent crimes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>violent_crimes <span class="ot">&lt;-</span> <span class="fu">filter</span>(crime, offense <span class="sc">!=</span> <span class="st">&quot;auto theft&quot;</span>, offense <span class="sc">!=</span> <span class="st">&quot;theft&quot;</span>, offense <span class="sc">!=</span> <span class="st">&quot;burglary&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rank violent crimes</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>violent_crimes<span class="sc">$</span>offense <span class="ot">&lt;-</span> <span class="fu">factor</span>(violent_crimes<span class="sc">$</span>offense,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;robbery&quot;</span>, <span class="st">&quot;aggravated </span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">assault&quot;</span>, <span class="st">&quot;rape&quot;</span>, <span class="st">&quot;murder&quot;</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># restrict to downtown</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>violent_crimes <span class="ot">&lt;-</span> <span class="fu">filter</span>(violent_crimes,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                         <span class="sc">-</span><span class="fl">95.39681</span> <span class="sc">&lt;=</span> lon <span class="sc">&amp;</span> lon <span class="sc">&lt;=</span> <span class="sc">-</span><span class="fl">95.34188</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">29.73631</span> <span class="sc">&lt;=</span> lat <span class="sc">&amp;</span> lat <span class="sc">&lt;=</span>  <span class="fl">29.78400</span>)</span></code></pre></div>
+</section>
+<section id="now-we-can-prepare-our-houston-bbox-and-map." class="slide level2">
+<h2>Now we can prepare our Houston bbox and map.</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use SpatialPoints from sp library to get</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># bbox from our data instead of manually.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>bbox <span class="ot">&lt;-</span> <span class="fu">bbox</span>(<span class="fu">SpatialPoints</span>(violent_crimes[,<span class="fu">c</span>(<span class="st">&quot;lon&quot;</span>, <span class="st">&quot;lat&quot;</span>)]))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a map based on this bbox</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">get_stamenmap</span>(bbox, <span class="at">maptype=</span><span class="st">&quot;toner-lite&quot;</span>, <span class="at">zoom=</span><span class="dv">13</span>)</span></code></pre></div>
+</section>
+<section id="write-a-ggmap-function-just-like-ggplot." class="slide level2">
+<h2>Write a ggmap function just like ggplot.</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(map, <span class="at">darken=</span><span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>violent_crimes, <span class="fu">aes</span>(lon, lat), <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p>Wow! Try it with and without the darken parameter. What changes?</p>
+</section>
+<section id="and-look-at-the-final-product" class="slide level2">
+<h2>And look at the final product!</h2>
+<p><img data-src="img/houston1.png" /></p>
+</section>
+<section id="we-can-also-facet-this-graph-just-like-ggplot." class="slide level2">
+<h2>We can also facet this graph, just like <code>ggplot</code>.</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(map, <span class="at">darken=</span><span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span> violent_crimes, <span class="fu">aes</span>(lon, lat, <span class="at">color =</span> offense)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>month)</span></code></pre></div>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="img/houston2.png" alt="Needs some cleanup, but not too bad!" /><figcaption aria-hidden="true">Needs some cleanup, but not too bad!</figcaption>
+</figure>
+</section>
+<section id="we-can-take-the-same-data-and-make-a-heat-map-instead." class="slide level2">
+<h2>We can take the same data and make a “heat map” instead.</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to only robberies</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>robberies <span class="ot">&lt;-</span> violent_crimes <span class="sc">%&gt;%</span> <span class="fu">filter</span>(offense <span class="sc">==</span> <span class="st">&quot;robbery&quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use density geometries</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggmap</span>(map, <span class="at">extent=</span><span class="st">&quot;device&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density2d</span>(<span class="at">data=</span>robberies, <span class="fu">aes</span>(<span class="at">x=</span>lon, <span class="at">y=</span>lat), <span class="at">size=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_density2d</span>(<span class="at">data=</span>robberies, <span class="fu">aes</span>(<span class="at">x=</span>lon, <span class="at">y=</span>lat, <span class="at">fill=</span>..level.., <span class="at">alpha=</span>..level..), <span class="at">size=</span><span class="fl">0.01</span>, <span class="at">bins=</span><span class="dv">16</span>, <span class="at">geom=</span><span class="st">&quot;polygon&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">high =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.3</span>), <span class="at">guide =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+</section>
+<section class="slide level2">
+
+<figure>
+<img data-src="img/houston3.png" alt="Cool, right? And maybe more useful than a simple dot map." /><figcaption aria-hidden="true">Cool, right? And maybe more useful than a simple dot map.</figcaption>
+</figure>
+</section></section>
+<section>
+<section id="youre-ready-to-try-on-your-own" class="title-slide slide level1">
+<h1>You’re ready to try on your own!</h1>
+
+</section>
+<section id="challenge-1" class="slide level2">
+<h2>Challenge 1</h2>
+<p>Remember how the Garlic Mustard dataset had latitude and longitude variables? One thing we might need to know, in order to validate our study, is if there is geographic bias in where garlic mustard plots were.</p>
+<ol type="1">
+<li>Find the bounding box for your data points</li>
+<li>Plot the garlic mustard points on our map of the US</li>
+<li>Color the points by a categorical variable</li>
+<li>Color and/or size the points by a numeric variable</li>
+<li>See if you can make a heat map of where the plots are concentrated.</li>
+</ol>
+</section>
+<section id="challenge-2" class="slide level2">
+<h2>Challenge 2</h2>
+<p>Now do the same thing for Europe! How would you get the right bounding box?</p>
+</section>
+<section id="challenge-3" class="slide level2">
+<h2>Challenge 3</h2>
+<p>Make a map of Denison University, and label a building or location on campus that you enjoy, with text that relates to why it’s special to you - or why you’re thankful for it.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hint: the &quot;annotate&quot; layer of ggmap looks like this:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">annotate</span>(<span class="st">&#39;text&#39;</span>, <span class="at">x=</span><span class="sc">-</span><span class="fl">82.523211</span>, <span class="at">y=</span><span class="fl">40.071658</span>, <span class="at">label=</span><span class="st">&#39;I teach here &lt;3&#39;</span>, <span class="at">colour=</span><span class="fu">I</span>(<span class="st">&#39;white&#39;</span>), <span class="at">size=</span><span class="dv">4</span>)</span></code></pre></div>
+</section>
+<section id="solution-1" class="slide level2">
+<h2>Solution 1</h2>
+<p><img data-src="img/mappingsolution1.png" /></p>
+</section>
+<section id="alternative-solution-1" class="slide level2">
+<h2>Alternative Solution 1</h2>
+<p><img data-src="img/mappingaltsolution1.png" /></p>
+</section>
+<section id="solution-2" class="slide level2">
+<h2>Solution 2</h2>
+<p><img data-src="img/mappingsolution2.png" /></p>
+</section>
+<section id="solution-3" class="slide level2">
+<h2>Solution 3</h2>
+<p><img data-src="img/mappingsolution3.png" /></p>
+</section></section>
+<section>
+<section id="chloropleth-maps" class="title-slide slide level1">
+<h1>Chloropleth Maps</h1>
+
+</section>
+<section id="you-see-these-everywhere" class="slide level2">
+<h2>You see these everywhere!</h2>
+<figure>
+<img data-src="img/electoral.jpg" alt="The in-progress NYTimes electoral map from 2008." /><figcaption aria-hidden="true">The in-progress NYTimes electoral map from 2008.</figcaption>
+</figure>
+</section>
+<section id="you-dont-even-need-ggmap-for-this.-regular-ggplot-will-do.-lets-make-one-together." class="slide level2">
+<h2>You don’t even need ggmap for this. Regular ggplot will do. Let’s make one together.</h2>
+</section>
+<section id="get-some-global-gdp-data-from-gapminder." class="slide level2">
+<h2>Get some global GDP data from gapminder.</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get gapminder world economy data for 2007</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>gap2007<span class="ot">=</span>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">region=</span>country)</span></code></pre></div>
+</section>
+<section id="chloropleth-maps-are-made-of-polygons.-lets-use-rworldmap-to-get-our-polygons." class="slide level2">
+<h2>Chloropleth maps are made of polygons. Let’s use rworldmap to get our polygons.</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get world polygons</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>world <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="at">map=</span><span class="st">&quot;world&quot;</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can &quot;join&quot; this to our gapminder data:</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>world2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(world, gap2007, <span class="at">by=</span><span class="st">&quot;region&quot;</span>)</span></code></pre></div>
+</section>
+<section id="finally-we-can-write-our-ggplot-code-using-geom_polygon." class="slide level2">
+<h2>Finally we can write our ggplot code using <code>geom_polygon()</code>.</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chloropleth world GDP map</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(world2, <span class="fu">aes</span>(long, lat, <span class="at">group =</span> group))<span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_polygon</span>(<span class="fu">aes</span>(<span class="at">fill =</span> gdpPercap), <span class="at">col=</span><span class="st">&quot;white&quot;</span>)<span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">&quot;C&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code></pre></div>
+</section>
+<section id="and-voila" class="slide level2">
+<h2>And voila!</h2>
+<p><img data-src="img/chloropleth1.png" /></p>
+</section>
+<section id="you-try-it" class="slide level2">
+<h2>You try it!</h2>
+<p><strong>Challenge</strong>: Make a similar map for the urban population of US states.</p>
+<p>Here’s some code to get you started:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get US states polygons</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>states <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="at">map=</span><span class="st">&quot;state&quot;</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Lowercase crime data</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>USArrests<span class="sc">$</span>region <span class="ot">=</span> <span class="fu">tolower</span>(<span class="fu">rownames</span>(USArrests))</span></code></pre></div>
+<p>What do you need to do next? Think about joining data before you try ggplot!</p>
+</section>
+<section id="heres-what-youre-aiming-for" class="slide level2">
+<h2>Here’s what you’re aiming for:</h2>
+<p><img data-src="img/chloropleth2.png" /></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: false,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
