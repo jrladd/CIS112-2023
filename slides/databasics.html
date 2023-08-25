@@ -125,6 +125,114 @@ attributes identify each entity.</li>
 <h2>Is this a relational table?</h2>
 <p><img data-src="img/relational_exercise.png" /></p>
 </section></section>
+<section>
+<section id="dependencies" class="title-slide slide level1">
+<h1>Dependencies</h1>
+
+</section>
+<section id="how-do-tables-relate-to-one-another" class="slide level2">
+<h2>How do tables relate to one another?</h2>
+<p>“A <em>functional dependency</em> is a relationship between two sets
+of attributes in a database, where one set (the determinant) determines
+the values of the other set (the dependent).”</p>
+<p><a
+href="https://monday.com/blog/project-management/functional-dependencies-2/">monday.com</a></p>
+</section>
+<section id="types-of-functional-dependencies" class="slide level2">
+<h2>Types of functional dependencies</h2>
+<ul>
+<li class="fragment">full functional dependency</li>
+<li class="fragment">partial functional dependency</li>
+<li class="fragment">transitive functional dependency</li>
+</ul>
+</section>
+<section id="dependencies-can-help-identify-and-reduce-data-redundancy."
+class="slide level2">
+<h2>Dependencies can help identify and reduce <strong>data
+redundancy</strong>.</h2>
+</section>
+<section id="dependency-diagrams" class="slide level2">
+<h2>Dependency Diagrams</h2>
+<p><img data-src="img/dependency.png" /></p>
+</section>
+<section
+id="you-can-turn-the-diagram-into-notation-of-the-functional-dependencies."
+class="slide level2">
+<h2>You can turn the diagram into notation of the functional
+dependencies.</h2>
+<p>(Building, Number) → (nBed, nBath)<br />
+(Building) → (StreetAddress)</p>
+<p>This follows the form:</p>
+<p><em>Determinants</em> → <em>Dependents</em></p>
+</section>
+<section id="these-functional-dependencies-will-become-two-tables."
+class="slide level2">
+<h2>These functional dependencies will become two tables.</h2>
+<p>BUILDING(<strong>Building</strong>, StreetAddress)<br />
+APARTMENT(<em>Building</em>, <strong>Number</strong>, nBed, nBath)</p>
+<p>This is a <em>schema</em>, and it follows the form:</p>
+<p>TABLE(<strong>PrimaryKey</strong>, <em>ForeignKey</em>,
+Attribute)</p>
+</section>
+<section id="dependencies-are-defined-by-keys." class="slide level2">
+<h2>Dependencies are defined by <em>keys</em>.</h2>
+<ul>
+<li class="fragment">Candidate Key: any attribute or set of attributes
+which uniquely identify each entity</li>
+<li class="fragment"><strong>Primary Key</strong>: the developer-chosen
+candidate key.</li>
+<li class="fragment">Secondary Key: any non-primary candidate key;
+typically used as an index.</li>
+<li class="fragment"><strong>Foreign Key</strong>: a primary key from an
+external relation.</li>
+<li class="fragment">Composite Key: any key comprised of more than one
+attribute.</li>
+</ul>
+</section>
+<section id="list-all-of-the-functional-dependencies."
+class="slide level2">
+<h2>List all of the functional dependencies.</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Month</th>
+<th>Day</th>
+<th>Year</th>
+<th>Item</th>
+<th>Price</th>
+<th>Quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8</td>
+<td>11</td>
+<td>2023</td>
+<td>Apple</td>
+<td>$3.99</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>14</td>
+<td>2023</td>
+<td>CokeZero</td>
+<td>$4.99</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>14</td>
+<td>2023</td>
+<td>Apple</td>
+<td>$3.99</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Which column or set of columns might form the primary key of this
+table?</p>
+</section></section>
     </div>
   </div>
 

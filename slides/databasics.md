@@ -65,3 +65,59 @@ Relational databases don't depend on the way users will interface with the data,
 ## Is this a relational table?
 
 ![](img/relational_exercise.png)
+
+# Dependencies
+
+## How do tables relate to one another?
+
+"A *functional dependency* is a relationship between two sets of attributes in a database, where one set (the determinant) determines the values of the other set (the dependent)."
+
+[monday.com](https://monday.com/blog/project-management/functional-dependencies-2/)
+
+## Types of functional dependencies
+
+- full functional dependency
+- partial functional dependency
+- transitive functional dependency
+
+## Dependencies can help identify and reduce **data redundancy**.
+
+## Dependency Diagrams
+
+![](img/dependency.png)
+
+## You can turn the diagram into notation of the functional dependencies.
+
+(Building, Number) → (nBed, nBath)  
+(Building) → (StreetAddress)
+
+This follows the form:
+
+*Determinants* → *Dependents*
+
+## These functional dependencies will become two tables.
+
+BUILDING(**Building**, StreetAddress)  
+APARTMENT(*Building*, **Number**, nBed, nBath)
+
+This is a *schema*, and it follows the form:
+
+TABLE(**PrimaryKey**, *ForeignKey*, Attribute)
+
+## Dependencies are defined by *keys*.
+
+- Candidate Key: any attribute or set of attributes which uniquely identify each entity
+- **Primary Key**: the developer-chosen candidate key.
+- Secondary Key: any non-primary candidate key; typically used as an index.
+- **Foreign Key**: a primary key from an external relation.
+- Composite Key: any key comprised of more than one attribute.
+
+## List all of the functional dependencies.
+
+Month|Day|Year|Item|Price|Quantity
+--|--|--|---|--|--
+8|11|2023|Apple|$3.99|2
+8|14|2023|CokeZero|$4.99|3
+8|14|2023|Apple|$3.99|2
+
+Which column or set of columns might form the primary key of this table?
