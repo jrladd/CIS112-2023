@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="CIS 112, Dr. Ladd">
-  <title>Database Basics: Databasics?</title>
+  <title>Database Basics: Databasics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -34,7 +34,7 @@
     <div class="slides">
 
 <section id="title-slide">
-  <h1 class="title">Database Basics: Databasics?</h1>
+  <h1 class="title">Database Basics: Databasics</h1>
   <p class="author">CIS 112, Dr. Ladd</p>
 </section>
 
@@ -141,9 +141,14 @@ href="https://monday.com/blog/project-management/functional-dependencies-2/">mon
 <section id="types-of-functional-dependencies" class="slide level2">
 <h2>Types of functional dependencies</h2>
 <ul>
-<li class="fragment">full functional dependency</li>
-<li class="fragment">partial functional dependency</li>
-<li class="fragment">transitive functional dependency</li>
+<li class="fragment"><em>full functional dependency</em>: one and only
+one value of the determinant attribute determines one and only one value
+of the dependent attribute</li>
+<li class="fragment"><em>partial functional dependency</em>: a
+dependency that exists between a subset of the (composite) primary key
+and one or more dependent attributes</li>
+<li class="fragment"><em>transitive functional dependency</em>: a
+dependency that exists between two or more non-key attributes</li>
 </ul>
 </section>
 <section id="dependencies-can-help-identify-and-reduce-data-redundancy."
@@ -151,9 +156,36 @@ class="slide level2">
 <h2>Dependencies can help identify and reduce <strong>data
 redundancy</strong>.</h2>
 </section>
+<section id="dependencies-are-defined-by-keys." class="slide level2">
+<h2>Dependencies are defined by <em>keys</em>.</h2>
+<ul>
+<li class="fragment">Candidate Key: any attribute or set of attributes
+which uniquely identify each entity</li>
+<li class="fragment"><strong>Primary Key</strong>: the developer-chosen
+candidate key.</li>
+<li class="fragment">Secondary Key: any non-primary candidate key;
+typically used as an index.</li>
+<li class="fragment"><strong>Foreign Key</strong>: a primary key from an
+external relation.</li>
+<li class="fragment">Composite Key: any key comprised of more than one
+attribute.</li>
+</ul>
+</section>
 <section id="dependency-diagrams" class="slide level2">
 <h2>Dependency Diagrams</h2>
 <p><img data-src="img/dependency.png" /></p>
+</section>
+<section id="how-to-draw-a-dependency-diagram" class="slide level2">
+<h2>How to Draw a Dependency Diagram</h2>
+<ol type="1">
+<li class="fragment">Identify the primary key (or composite key).</li>
+<li class="fragment">Draw arrows from the primary key(s) to all other
+attributes.</li>
+<li class="fragment">If there is a composite key, look for <em>partial
+dependencies</em> between part of the key and any other attributes.</li>
+<li class="fragment">Look for <em>transitive dependencies</em> between
+any non-key attributes.</li>
+</ol>
 </section>
 <section
 id="you-can-turn-the-diagram-into-notation-of-the-functional-dependencies."
@@ -173,21 +205,6 @@ APARTMENT(<em>Building</em>, <strong>Number</strong>, nBed, nBath)</p>
 <p>This is a <em>schema</em>, and it follows the form:</p>
 <p>TABLE(<strong>PrimaryKey</strong>, <em>ForeignKey</em>,
 Attribute)</p>
-</section>
-<section id="dependencies-are-defined-by-keys." class="slide level2">
-<h2>Dependencies are defined by <em>keys</em>.</h2>
-<ul>
-<li class="fragment">Candidate Key: any attribute or set of attributes
-which uniquely identify each entity</li>
-<li class="fragment"><strong>Primary Key</strong>: the developer-chosen
-candidate key.</li>
-<li class="fragment">Secondary Key: any non-primary candidate key;
-typically used as an index.</li>
-<li class="fragment"><strong>Foreign Key</strong>: a primary key from an
-external relation.</li>
-<li class="fragment">Composite Key: any key comprised of more than one
-attribute.</li>
-</ul>
 </section>
 <section id="list-all-of-the-functional-dependencies."
 class="slide level2">
@@ -226,12 +243,47 @@ class="slide level2">
 <td>2023</td>
 <td>Apple</td>
 <td>$3.99</td>
-<td>2</td>
+<td>5</td>
 </tr>
 </tbody>
 </table>
 <p>Which column or set of columns might form the primary key of this
 table?</p>
+</section></section>
+<section>
+<section id="normalization" class="title-slide slide level1">
+<h1>Normalization</h1>
+
+</section>
+<section
+id="normalization-organizes-data-based-on-functional-dependencies-in-order-to-remove-potential-redundancies."
+class="slide level2">
+<h2><strong>Normalization</strong> organizes data based on functional
+dependencies in order to remove potential redundancies.</h2>
+</section>
+<section id="three-stages-of-normalization" class="slide level2">
+<h2>Three Stages of Normalization</h2>
+<ul>
+<li class="fragment"><em>First Normal Form (1NF)</em>: follows all
+criteria of Codd’s Relational Model, with primary key identified</li>
+<li class="fragment"><em>Second Normal Form (2NF)</em>: all partial
+dependencies removed</li>
+<li class="fragment"><em>Third Normal Form (3NF)</em>: all transitive
+dependencies removed</li>
+<li class="fragment">There are more that typically aren’t used!</li>
+</ul>
+</section>
+<section id="making-a-dependency-diagram-prepares-you-to-normalize"
+class="slide level2">
+<h2>Making a dependency diagram prepares you to normalize!</h2>
+</section>
+<section id="you-dont-always-want-to-fully-normalize-your-data."
+class="slide level2">
+<h2>You don’t always want to fully normalize your data.</h2>
+<p>Some data (like dates) are better kept together for ease of use and
+performance reasons, even if that means the database doesn’t follow
+every normal form. Returning the database to this state is called
+<strong>denormalization</strong>.</p>
 </section></section>
     </div>
   </div>

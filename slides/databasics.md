@@ -1,4 +1,4 @@
-% Database Basics: Databasics?
+% Database Basics: Databasics
 % CIS 112, Dr. Ladd
 
 # Data and Information
@@ -76,15 +76,30 @@ Relational databases don't depend on the way users will interface with the data,
 
 ## Types of functional dependencies
 
-- full functional dependency
-- partial functional dependency
-- transitive functional dependency
+- *full functional dependency*: one and only one value of the determinant attribute determines one and only one value of the dependent attribute
+- *partial functional dependency*: a dependency that exists between a subset of the (composite) primary key and one or more dependent attributes
+- *transitive functional dependency*: a dependency that exists between two or more non-key attributes
 
 ## Dependencies can help identify and reduce **data redundancy**.
+
+## Dependencies are defined by *keys*.
+
+- Candidate Key: any attribute or set of attributes which uniquely identify each entity
+- **Primary Key**: the developer-chosen candidate key.
+- Secondary Key: any non-primary candidate key; typically used as an index.
+- **Foreign Key**: a primary key from an external relation.
+- Composite Key: any key comprised of more than one attribute.
 
 ## Dependency Diagrams
 
 ![](img/dependency.png)
+
+## How to Draw a Dependency Diagram
+
+1. Identify the primary key (or composite key).
+2. Draw arrows from the primary key(s) to all other attributes.
+3. If there is a composite key, look for *partial dependencies* between part of the key and any other attributes.
+4. Look for *transitive dependencies* between any non-key attributes.
 
 ## You can turn the diagram into notation of the functional dependencies.
 
@@ -104,13 +119,6 @@ This is a *schema*, and it follows the form:
 
 TABLE(**PrimaryKey**, *ForeignKey*, Attribute)
 
-## Dependencies are defined by *keys*.
-
-- Candidate Key: any attribute or set of attributes which uniquely identify each entity
-- **Primary Key**: the developer-chosen candidate key.
-- Secondary Key: any non-primary candidate key; typically used as an index.
-- **Foreign Key**: a primary key from an external relation.
-- Composite Key: any key comprised of more than one attribute.
 
 ## List all of the functional dependencies.
 
@@ -118,6 +126,23 @@ Month|Day|Year|Item|Price|Quantity
 --|--|--|---|--|--
 8|11|2023|Apple|$3.99|2
 8|14|2023|CokeZero|$4.99|3
-8|14|2023|Apple|$3.99|2
+8|14|2023|Apple|$3.99|5
 
 Which column or set of columns might form the primary key of this table?
+
+# Normalization
+
+## **Normalization** organizes data based on functional dependencies in order to remove potential redundancies.
+
+## Three Stages of Normalization
+
+- *First Normal Form (1NF)*: follows all criteria of Codd's Relational Model, with primary key identified
+- *Second Normal Form (2NF)*: all partial dependencies removed
+- *Third Normal Form (3NF)*: all transitive dependencies removed
+- There are more that typically aren't used!
+
+## Making a dependency diagram prepares you to normalize!
+
+## You don't always want to fully normalize your data.
+
+Some data (like dates) are better kept together for ease of use and performance reasons, even if that means the database doesn't follow every normal form. Returning the database to this state is called **denormalization**.
