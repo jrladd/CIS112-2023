@@ -146,3 +146,28 @@ Which column or set of columns might form the primary key of this table?
 ## You don't always want to fully normalize your data.
 
 Some data (like dates) are better kept together for ease of use and performance reasons, even if that means the database doesn't follow every normal form. Returning the database to this state is called **denormalization**.
+
+# Let's Practice Normalization!
+
+## Follow these steps:
+
+1. Rewrite the table so it's in **1NF** (i.e. so it follows Codd's relational model).
+2. Draw the *dependency diagram* and identify the primary key(s).
+3. If necessary, redraw the *dependency diagram* so it's in **2NF**. Create the accompanying *schema*.
+4. If necessary, redraw the *dependency diagram* so it's in **3NF**. Create the accompanying *schema*.
+
+## We'll try this one together.
+
+![](img/normalize1.png)
+
+---
+
+![](img/normalize2.png)
+
+---
+
+![](img/normalize3.png)
+
+---
+
+![](img/normalize4.png)
