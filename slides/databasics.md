@@ -171,3 +171,18 @@ Some data (like dates) are better kept together for ease of use and performance 
 ---
 
 ![](img/normalize4.png)
+
+# Data Integrity
+
+## Data integrity "refers to the **accuracy and consistency** (validity) of data over its life cycle."
+
+[cf. Digital Guardian article](https://www.digitalguardian.com/blog/what-data-integrity-data-protection-101)
+
+## ALCOA: Data should be *attributable*, *legible*, *contemporaneous*, *original*, and *accurate*.
+
+##  Types of Data Integrity
+
+- *Entity integrity*: primary keys represent one and only one entity
+- *Referential integrity*: foreign keys define connections between tables
+- *Domain integrity*: values in a database follow a set format
+- *User-defined integrity*: users can define new data and its constraints
