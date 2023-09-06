@@ -355,6 +355,68 @@ follow a set format</li>
 new data and its constraints</li>
 </ul>
 </section></section>
+<section>
+<section id="erds" class="title-slide slide level1">
+<h1>ERDs</h1>
+<figure>
+<img data-src="img/erd.png" alt="visual-paradigm.com" />
+<figcaption aria-hidden="true">visual-paradigm.com</figcaption>
+</figure>
+</section>
+<section
+id="entity-relationship-diagrams-erds-document-the-database-schema-to-show"
+class="slide level2">
+<h2><strong>Entity relationship diagrams</strong> (ERDs) document the
+database schema to show:</h2>
+<ul>
+<li class="fragment">tables and their connections</li>
+<li class="fragment">attributes (i.e. columns)</li>
+<li class="fragment">data types</li>
+<li class="fragment">constraints</li>
+</ul>
+</section>
+<section id="three-types-of-erds" class="slide level2">
+<h2>Three Types of ERDs</h2>
+<ul>
+<li class="fragment">Conceptual: documents the entities and the
+cardinality of their relations.</li>
+<li class="fragment">Logical: documents the attributes that establish
+the formal connections.</li>
+<li class="fragment"><strong>Physical</strong>: documents the way the
+schema is stored, including data types and constraints.</li>
+</ul>
+</section>
+<section id="databases-store-data-in-binary" class="slide level2">
+<h2>Databases store data in <em>binary</em>!</h2>
+<p>A <em>bit</em> (binary digit) stores a one or a zero. Data is stored
+in <strong>bytes</strong>, a series of 8 bits.</p>
+</section>
+<section id="an-example-of-a-number-stored-in-8-bits-1-byte"
+class="slide level2">
+<h2>An example of a number stored in 8 bits (1 byte):</h2>
+<p><img data-src="img/binary.png" /></p>
+</section>
+<section id="common-data-types" class="slide level2">
+<h2>Common Data Types</h2>
+<ul>
+<li class="fragment"><strong>CHAR</strong>: a single character, e.g. a
+letter, number, or symbol (1 byte)</li>
+<li class="fragment"><strong>TEXT</strong>: a sequence of characters
+that forms a <em>string</em> (1 byte per character)</li>
+<li class="fragment"><strong>INTEGER</strong>: a whole number, either
+positive or negative (typically 4 bytes)</li>
+<li class="fragment"><strong>FLOAT(P)</strong>: a numeric value that can
+have a decimal point. Supports the provided “floating point” precision
+(<em>P</em>, or the number of significant digits to be stored). (at
+least 4 bytes)</li>
+<li class="fragment"><strong>BOOLEAN</strong>: a binary choice,
+e.g. True or False (1 byte)</li>
+</ul>
+</section>
+<section id="null-values-are-not-stored-in-bytes" class="slide level2">
+<h2>NULL values are not stored in bytes!</h2>
+<p>Minimize NULL values to use your storage wisely.</p>
+</section></section>
     </div>
   </div>
 

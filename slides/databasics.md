@@ -186,3 +186,40 @@ Some data (like dates) are better kept together for ease of use and performance 
 - *Referential integrity*: foreign keys define connections between tables
 - *Domain integrity*: values in a database follow a set format
 - *User-defined integrity*: users can define new data and its constraints
+
+# ERDs
+
+![visual-paradigm.com](img/erd.png)
+
+## **Entity relationship diagrams** (ERDs) document the database schema to show:
+
+- tables and their connections
+- attributes (i.e. columns)
+- data types
+- constraints
+
+## Three Types of ERDs
+
+- Conceptual: documents the entities and the cardinality of their relations.
+- Logical: documents the attributes that establish the formal connections.
+- **Physical**: documents the way the schema is stored, including data types and constraints.
+
+## Databases store data in *binary*! 
+
+A *bit* (binary digit) stores a one or a zero. Data is stored in **bytes**, a series of 8 bits.
+
+## An example of a number stored in 8 bits (1 byte):
+
+![](img/binary.png)
+
+## Common Data Types
+
+- **CHAR**: a single character, e.g. a letter, number, or symbol (1 byte)
+- **TEXT**: a sequence of characters that forms a *string* (1 byte per character)
+- **INTEGER**: a whole number, either positive or negative (typically 4 bytes)
+- **FLOAT(P)**: a numeric value that can have a decimal point. Supports the provided "floating point" precision (*P*, or the number of significant digits to be stored). (at least 4 bytes)
+- **BOOLEAN**: a binary choice, e.g. True or False (1 byte)
+
+## NULL values are not stored in bytes!
+
+Minimize NULL values to use your storage wisely.
