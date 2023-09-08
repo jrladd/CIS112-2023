@@ -417,6 +417,95 @@ e.g. True or False (1 byte)</li>
 <h2>NULL values are not stored in bytes!</h2>
 <p>Minimize NULL values to use your storage wisely.</p>
 </section></section>
+<section>
+<section id="how-to-draw-an-erd" class="title-slide slide level1">
+<h1>How to Draw an ERD</h1>
+
+</section>
+<section id="a-simple-example" class="slide level2">
+<h2>A simple example</h2>
+<table>
+<thead>
+<tr class="header">
+<th>date</th>
+<th>item</th>
+<th>price</th>
+<th>quantity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>8-11-2023</td>
+<td>Apple</td>
+<td>$3.99</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>8-14-2023</td>
+<td>CokeZero</td>
+<td>$4.99</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>8-14-2023</td>
+<td>Apple</td>
+<td>$3.99</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section
+id="every-table-is-a-box-with-the-table-name-all-its-attributes-and-data-types-and-pks-and-fks-identified."
+class="slide level2">
+<h2>Every table is a box with the table name, all its attributes and
+data types, and PKs and FKs identified.</h2>
+</section>
+<section id="the-box-should-also-include-possible-constraints."
+class="slide level2">
+<h2>The box should also include possible constraints.</h2>
+<ul>
+<li class="fragment"><strong>NOT NULL</strong>: the attribute is not
+permitted to contain a null value</li>
+<li class="fragment"><strong>UNIQUE</strong>: the stored value may not
+match any other entity’s value for that attribute.</li>
+<li class="fragment"><strong>PRIMARY KEY</strong> (enforces NOT NULL and
+UNIQUE)</li>
+<li class="fragment"><strong>FOREIGN KEY</strong> (enforces NOT
+NULL)</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><img data-src="img/grocery_erd1.png" /></p>
+</section>
+<section id="lines-between-boxes-show-relationships."
+class="slide level2">
+<h2>Lines between boxes show relationships.</h2>
+<p>Relationships can be <em>strong</em> or <em>weak</em>. Weak
+relationships are <strong>existence-dependent</strong>.</p>
+</section>
+<section id="cardinalityconnectivity-shows-the-kind-of-relationship."
+class="slide level2">
+<h2>Cardinality/connectivity shows the <em>kind</em> of
+relationship.</h2>
+<p><img data-src="img/cardinality.png" /></p>
+</section>
+<section id="make-sure-to-consider-flow-and-readability."
+class="slide level2">
+<h2>Make sure to consider <em>flow</em> and readability.</h2>
+<ul>
+<li class="fragment">Consider the order of your tables left to
+right.</li>
+<li class="fragment">Lines shouldn’t criss-cross.</li>
+<li class="fragment">Ends of lines should point at the correct
+PKs/FKs.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><img data-src="img/grocery_erd2.png" /></p>
+</section></section>
     </div>
   </div>
 

@@ -223,3 +223,44 @@ A *bit* (binary digit) stores a one or a zero. Data is stored in **bytes**, a se
 ## NULL values are not stored in bytes!
 
 Minimize NULL values to use your storage wisely.
+
+# How to Draw an ERD
+
+## A simple example
+
+date|item|price|quantity
+--|---|--|--
+8-11-2023|Apple|$3.99|2
+8-14-2023|CokeZero|$4.99|3
+8-14-2023|Apple|$3.99|5
+
+## Every table is a box with the table name, all its attributes and data types, and PKs and FKs identified.
+
+## The box should also include possible constraints.
+
+- **NOT NULL**: the attribute is not permitted to contain a null value
+- **UNIQUE**: the stored value may not match any other entity's value for that attribute.
+- **PRIMARY KEY** (enforces NOT NULL and UNIQUE)
+- **FOREIGN KEY** (enforces NOT NULL)
+
+---
+
+![](img/grocery_erd1.png)
+
+## Lines between boxes show relationships.
+
+Relationships can be *strong* or *weak*. Weak relationships are **existence-dependent**.
+
+## Cardinality/connectivity shows the *kind* of relationship.
+
+![](img/cardinality.png)
+
+## Make sure to consider *flow* and readability.
+
+- Consider the order of your tables left to right.
+- Lines shouldn't criss-cross.
+- Ends of lines should point at the correct PKs/FKs.
+
+---
+
+![](img/grocery_erd2.png)
