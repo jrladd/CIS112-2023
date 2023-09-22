@@ -5,7 +5,7 @@ permalink: /slides/
 
 # Slideshows
 
-[Databasics](/CIS112/slides/databasics)
+[Databasics](/CIS112/slides/databasics)  
 [SQL](/CIS112/slides/sql)
 
 # Resources
