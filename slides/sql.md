@@ -45,7 +45,7 @@ SET search_path TO "groceries";
 
 ```sql
 CREATE TABLE "cost" (
-    "item" TEXT NOT NULL PRIMARY KEY,
+    "item" TEXT PRIMARY KEY,
     "price" FLOAT(3) NOT NULL
 );
 ```
@@ -76,3 +76,60 @@ DROP TABLE removes the table and the CASCADE argument removes objects that depen
 ```sql
 DROP TABLE "purchase" CASCADE;
 ```
+
+# Data Manipulation Language (DML)
+
+## INSERT data into your tables.
+
+```sql
+INSERT INTO "cost" VALUES ('Apple', 3.99);
+```
+
+## Or INSERT into specific columns.
+
+```sql
+INSERT INTO "cost" (item) VALUES ('CokeZero');
+```
+
+This will only work if the other columns can be NULL!
+
+## You try it!
+
+Enter the command for inserting data into the purchase table.
+
+HINT: You may need to look at the Postgres documentation for data types.
+
+## Check if your data is there with SELECT.
+
+```sql
+SELECT * from "cost";
+```
+
+```sql
+SELECT * from "purchase";
+```
+
+We'll learn a lot more about SELECT later on...
+
+## DELETE records from your table.
+
+```sql
+DELETE FROM "purchase" WHERE "item"='Apple';
+```
+
+- Delete takes a *condition* with WHERE (**not IF**)
+- Type of quotation marks is important! Tables and column names in double; values in single.
+- `DELETE FROM "purchase";` will delete **ALL** the data without warning.
+
+## You try it!
+
+Delete CokeZero from the `cost` table.
+
+## COPY an entire table from a CSV file.
+
+```sql
+COPY sample_table_name FROM 'C:\sampledb\sample_data.csv' DELIMITER ',' CSV HEADER;
+```
+
+- The column names **MUST** be in the same order.
+

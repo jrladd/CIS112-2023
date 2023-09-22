@@ -175,7 +175,7 @@ class="slide level2">
 <h2>You can CREATE an entire TABLE with one command.</h2>
 <div class="sourceCode" id="cb3"><pre
 class="sourceCode sql"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> <span class="ot">&quot;cost&quot;</span> (</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="ot">&quot;item&quot;</span> TEXT <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="ot">&quot;item&quot;</span> TEXT <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="ot">&quot;price&quot;</span> <span class="dt">FLOAT</span>(<span class="dv">3</span>) <span class="kw">NOT</span> <span class="kw">NULL</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
 <p>Make sure you include data types, constraints, and primary keys.</p>
@@ -212,6 +212,61 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb4-1"><a href="#c
 that depend on the table.</p>
 <div class="sourceCode" id="cb5"><pre
 class="sourceCode sql"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">CASCADE</span>;</span></code></pre></div>
+</section></section>
+<section>
+<section id="data-manipulation-language-dml"
+class="title-slide slide level1">
+<h1>Data Manipulation Language (DML)</h1>
+
+</section>
+<section id="insert-data-into-your-tables." class="slide level2">
+<h2>INSERT data into your tables.</h2>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="ot">&quot;cost&quot;</span> <span class="kw">VALUES</span> (<span class="st">&#39;Apple&#39;</span>, <span class="fl">3.99</span>);</span></code></pre></div>
+</section>
+<section id="or-insert-into-specific-columns." class="slide level2">
+<h2>Or INSERT into specific columns.</h2>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="ot">&quot;cost&quot;</span> (item) <span class="kw">VALUES</span> (<span class="st">&#39;CokeZero&#39;</span>);</span></code></pre></div>
+<p>This will only work if the other columns can be NULL!</p>
+</section>
+<section id="you-try-it" class="slide level2">
+<h2>You try it!</h2>
+<p>Enter the command for inserting data into the purchase table.</p>
+<p>HINT: You may need to look at the Postgres documentation for data
+types.</p>
+</section>
+<section id="check-if-your-data-is-there-with-select."
+class="slide level2">
+<h2>Check if your data is there with SELECT.</h2>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">from</span> <span class="ot">&quot;cost&quot;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">from</span> <span class="ot">&quot;purchase&quot;</span>;</span></code></pre></div>
+<p>We’ll learn a lot more about SELECT later on…</p>
+</section>
+<section id="delete-records-from-your-table." class="slide level2">
+<h2>DELETE records from your table.</h2>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">WHERE</span> <span class="ot">&quot;item&quot;</span><span class="op">=</span><span class="st">&#39;Apple&#39;</span>;</span></code></pre></div>
+<ul>
+<li class="fragment">Delete takes a <em>condition</em> with WHERE
+(<strong>not IF</strong>)</li>
+<li class="fragment">Type of quotation marks is important! Tables and
+column names in double; values in single.</li>
+<li class="fragment"><code>DELETE FROM "purchase";</code> will delete
+<strong>ALL</strong> the data without warning.</li>
+</ul>
+</section>
+<section id="you-try-it-1" class="slide level2">
+<h2>You try it!</h2>
+<p>Delete CokeZero from the <code>cost</code> table.</p>
+</section>
+<section id="copy-an-entire-table-from-a-csv-file."
+class="slide level2">
+<h2>COPY an entire table from a CSV file.</h2>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> sample_table_name <span class="kw">FROM</span> <span class="st">&#39;C:\sampledb\sample_data.csv&#39;</span> DELIMITER <span class="st">&#39;,&#39;</span> CSV <span class="kw">HEADER</span>;</span></code></pre></div>
 </section></section>
     </div>
   </div>
