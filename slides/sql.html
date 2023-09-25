@@ -276,6 +276,23 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb10-1"><a href="#
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="ot">&quot;item&quot;</span> TEXT <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="ot">&quot;price&quot;</span> <span class="dt">FLOAT</span>(<span class="dv">3</span>) <span class="kw">CHECK</span> (<span class="ot">&quot;price&quot;</span> <span class="op">&gt;</span> <span class="dv">0</span>)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>);</span></code></pre></div>
+</section>
+<section id="you-try-it" class="slide level2">
+<h2>You try it!</h2>
+<ol type="1">
+<li class="fragment">Completely delete the groceries schema (but save
+your .sql files).</li>
+<li class="fragment">Rewrite your DDL script with all original
+constraints.</li>
+<li class="fragment">Add a constraint for the correct foreign key in the
+“purchase” table.</li>
+<li class="fragment">Add a constraint to prevent “price” from being
+negative.</li>
+<li class="fragment">Re-run your INSERT commands from last time to
+repopulate the database.</li>
+<li class="fragment">Look at the schemas and data (with SELECT) to see
+if it worked.</li>
+</ol>
 </section></section>
 <section>
 <section id="data-manipulation-language-dml"
@@ -294,7 +311,7 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb11-1"><a href="#
 class="sourceCode sql"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="ot">&quot;cost&quot;</span> (item) <span class="kw">VALUES</span> (<span class="st">&#39;CokeZero&#39;</span>);</span></code></pre></div>
 <p>This will only work if the other columns can be NULL!</p>
 </section>
-<section id="you-try-it" class="slide level2">
+<section id="you-try-it-1" class="slide level2">
 <h2>You try it!</h2>
 <p>Enter the command for inserting data into the purchase table.</p>
 <p>HINT: You may need to look at the Postgres documentation for data
@@ -322,7 +339,7 @@ column names in double; values in single.</li>
 <strong>ALL</strong> the data without warning.</li>
 </ul>
 </section>
-<section id="you-try-it-1" class="slide level2">
+<section id="you-try-it-2" class="slide level2">
 <h2>You try it!</h2>
 <p>Delete CokeZero from the <code>cost</code> table.</p>
 </section>
