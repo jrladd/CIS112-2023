@@ -77,6 +77,77 @@ DROP TABLE removes the table and the CASCADE argument removes objects that depen
 DROP TABLE "purchase" CASCADE;
 ```
 
+## Add CONSTRAINTs to individual columns or the whole table.
+
+Use the [Postgres Documentation](https://www.postgresql.org/docs/14/ddl-constraints.html) for a complete guide.
+
+. . .
+
+You've already done this with PRIMARY KEY and NOT NULL!
+
+## You can make one or many columns UNIQUE.
+
+```sql
+CREATE TABLE "cost" (
+    "item" TEXT UNIQUE,
+    "price" FLOAT(3)
+);
+```
+
+or
+
+```sql
+CREATE TABLE "cost" (
+    "item" TEXT,
+    "price" FLOAT(3),
+    UNIQUE ("item")
+);
+```
+
+## Add foreign keys with the REFERENCES constraint.
+
+- Avoid errors with appropriate *flow*: i.e. you must reference a table that already exists!
+- If you don't specify the columns, SQL will automatically use the reference table's *primary key*.
+
+## Examples of the REFERENCES constraint
+
+```sql
+CREATE TABLE "purchase" ( --Option 1: Column Constraint
+    "date" DATE,
+    "item" TEXT REFERENCES "cost" ("item"),
+    "quantity" INTEGER NOT NULL,
+    PRIMARY KEY ("date", "item")
+);
+```
+
+```sql
+CREATE TABLE "purchase" ( --Option 2: Table Constraint
+    "date" DATE,
+    "item" TEXT,
+    "quantity" INTEGER NOT NULL,
+    PRIMARY KEY ("date", "item"),
+    FOREIGN KEY ("item") REFERENCES "cost" ("item")
+);
+```
+
+## Create custom constraints with CHECK.
+
+```sql
+CREATE TABLE "cost" (
+    "item" TEXT PRIMARY KEY,
+    "price" FLOAT(3) CHECK ("price" > 0)
+);
+```
+
+## You try it!
+
+1. Completely delete the groceries schema (but save your .sql files).
+2. Rewrite your DDL script with all original constraints.
+3. Add a constraint for the correct foreign key in the "purchase" table.
+4. Add a constraint to prevent "price" from being negative.
+5. Re-run your INSERT commands from last time to repopulate the database.
+6. Look at the schemas and data (with SELECT) to see if it worked.
+
 # Data Manipulation Language (DML)
 
 ## INSERT data into your tables.
