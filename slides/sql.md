@@ -216,13 +216,14 @@ DELETE FROM "purchase" WHERE "item"='Apple';
 
 Delete CokeZero from the `cost` table.
 
-## COPY an entire table from a CSV file.
+## Copy an entire table from a CSV file.
 
 ```sql
-COPY sample_table_name FROM 'C:\sampledb\sample_data.csv' DELIMITER ',' CSV HEADER;
+\copy "Musical Instrument" FROM 'musical_instruments.csv' WITH CSV HEADER
 ```
 
 - The column names **MUST** be in the same order.
+- The CSV must be in the same directory as your psql login.
 
 ## Change records with UPDATE.
 

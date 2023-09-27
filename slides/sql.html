@@ -364,12 +364,14 @@ column names in double; values in single.</li>
 </section>
 <section id="copy-an-entire-table-from-a-csv-file."
 class="slide level2">
-<h2>COPY an entire table from a CSV file.</h2>
+<h2>Copy an entire table from a CSV file.</h2>
 <div class="sourceCode" id="cb17"><pre
-class="sourceCode sql"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> sample_table_name <span class="kw">FROM</span> <span class="st">&#39;C:\sampledb\sample_data.csv&#39;</span> DELIMITER <span class="st">&#39;,&#39;</span> CSV <span class="kw">HEADER</span>;</span></code></pre></div>
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>\<span class="kw">copy</span> <span class="ot">&quot;Musical Instrument&quot;</span> <span class="kw">FROM</span> <span class="st">&#39;musical_instruments.csv&#39;</span> <span class="kw">WITH</span> CSV <span class="kw">HEADER</span></span></code></pre></div>
 <ul>
 <li class="fragment">The column names <strong>MUST</strong> be in the
 same order.</li>
+<li class="fragment">The CSV must be in the same directory as your psql
+login.</li>
 </ul>
 </section>
 <section id="change-records-with-update." class="slide level2">
