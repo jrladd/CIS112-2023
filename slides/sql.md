@@ -148,6 +148,26 @@ CREATE TABLE "cost" (
 5. Re-run your INSERT commands from last time to repopulate the database.
 6. Look at the schemas and data (with SELECT) to see if it worked.
 
+## Change tables with ALTER.
+
+A few examples:
+
+```sql
+-- Add a column
+ALTER TABLE "cost" ADD COLUMN "weight" FLOAT(4);
+
+-- Drop a column
+ALTER TABLE "purchase" DROP COLUMN "quantity";
+
+-- Rename a column
+ALTER TABLE "purchase" RENAME COLUMN "date" TO "day";
+
+-- Add (or remove) a constraint
+ALTER TABLE "purchase" ADD FOREIGN KEY ("item") REFERENCES "cost";
+```
+
+More in the [Postgres documentation](https://www.postgresql.org/docs/14/ddl-alter.html).
+
 # Data Manipulation Language (DML)
 
 ## INSERT data into your tables.
@@ -203,4 +223,29 @@ COPY sample_table_name FROM 'C:\sampledb\sample_data.csv' DELIMITER ',' CSV HEAD
 ```
 
 - The column names **MUST** be in the same order.
+
+## Change records with UPDATE.
+
+```sql
+-- Change one or many rows
+UPDATE "purchase" SET "quantity" = 6 WHERE "quantity" = 5;
+
+-- Change all rows based on original value
+UPDATE "cost" SET "price" = "price" * 100;
+
+-- Change more than one column
+UPDATE "cost" SET "item" = 'Banana', "price" = 599 WHERE "item" = 'Apple';
+```
+
+All this and more in the [Postgres documentation](https://www.postgresql.org/docs/14/dml-update.html).
+
+## Get data while modifying rows with RETURNING.
+
+```sql
+INSERT INTO "cost" VALUES ('CokeZero', 4.99) RETURNING "item";
+
+UPDATE "cost" SET "price" = "price" * 100 RETURNING "price";
+```
+
+As always, more in the [Postgres documentation](https://www.postgresql.org/docs/14/dml-returning.html).
 
