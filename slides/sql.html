@@ -400,6 +400,106 @@ class="sourceCode sql"><code class="sourceCode sql"><span id="cb19-1"><a href="#
 href="https://www.postgresql.org/docs/14/dml-returning.html">Postgres
 documentation</a>.</p>
 </section></section>
+<section>
+<section id="queries-dml" class="title-slide slide level1">
+<h1>Queries (DML)</h1>
+
+</section>
+<section id="erds-are-essential-for-queries." class="slide level2">
+<h2>ERDs are <em>essential</em> for queries.</h2>
+<p>You need them for column names, but also for capitalization,
+combining different tables, etc.</p>
+</section>
+<section id="select-is-the-command-for-all-queries."
+class="slide level2">
+<h2>SELECT is the command for <strong>all</strong> queries.</h2>
+<p>In its simplest form, you can use it to do simple arithmetic or to
+get all rows from a table.</p>
+<div class="sourceCode" id="cb20"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">9</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="ot">&quot;item&quot;</span>, <span class="ot">&quot;quantity&quot;</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span>;</span></code></pre></div>
+</section>
+<section
+id="perform-arithmetic-on-columns-and-give-them-new-names-with-as."
+class="slide level2">
+<h2>Perform arithmetic on columns and give them new names with AS.</h2>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="ot">&quot;item&quot;</span>, <span class="ot">&quot;quantity&quot;</span>, <span class="ot">&quot;quantity&quot;</span> <span class="op">+</span> <span class="dv">5</span> <span class="kw">AS</span> <span class="ot">&quot;updated_quantity&quot;</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span>;</span></code></pre></div>
+</section>
+<section
+id="if-the-column-isnt-numeric-i.e.-money-or-a-date-you-may-have-to-type-cast-to-avoid-errors"
+class="slide level2">
+<h2>If the column isn’t numeric (i.e. money or a date), you may have to
+<strong>type cast</strong> to avoid errors:</h2>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="ot">&quot;item&quot;</span>, <span class="ot">&quot;quantity&quot;</span>, <span class="ot">&quot;quantity&quot;</span>:<span class="ch">:NUMERIC</span> <span class="op">+</span> <span class="dv">5</span> <span class="kw">AS</span> <span class="ot">&quot;updated_quantity&quot;</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span>;</span></code></pre></div>
+<p>Other forms of type casting:</p>
+<pre><code>&quot;quantity&quot;::NUMERIC::INTEGER
+CAST(&quot;quantity&quot; AS NUMERIC)
+CAST(CAST(&quot;quantity&quot; AS NUMERIC) AS INTEGER))</code></pre>
+</section>
+<section id="sort-results-with-order-by." class="slide level2">
+<h2>Sort results with ORDER BY.</h2>
+<div class="sourceCode" id="cb26"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="ot">&quot;item&quot;</span>, <span class="ot">&quot;quantity&quot;</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">ORDER</span> <span class="kw">BY</span> <span class="ot">&quot;item&quot;</span>;</span></code></pre></div>
+<p>ORDER BY can also be used with arithmetic expressions and newly
+created columns!</p>
+</section>
+<section id="get-specific-rows-with-where-conditions."
+class="slide level2">
+<h2>Get specific rows with WHERE conditions.</h2>
+<div class="sourceCode" id="cb27"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="ot">&quot;item&quot;</span>, <span class="ot">&quot;date&quot;</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">WHERE</span> <span class="ot">&quot;item&quot;</span> <span class="op">=</span> <span class="st">&#39;Apple&#39;</span>;</span></code></pre></div>
+</section>
+<section id="get-a-set-number-of-rows-with-limit." class="slide level2">
+<h2>Get a set number of rows with LIMIT.</h2>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">LIMIT</span> <span class="dv">2</span>;</span></code></pre></div>
+<p>Use OFFSET to start somewhere other than the beginning (which is row
+0):</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">LIMIT</span> <span class="dv">2</span> OFFSET <span class="dv">1</span>;</span></code></pre></div>
+<p>It’s recommended to use LIMIT with ORDER BY always!</p>
+</section>
+<section id="remember-you-can-always-refer-back-to-the-documentation"
+class="slide level2">
+<h2>Remember, you can always refer back to the documentation:</h2>
+<p>SELECT queries: <a
+href="https://www.postgresql.org/docs/14/queries-overview.html"
+class="uri">https://www.postgresql.org/docs/14/queries-overview.html</a></p>
+<p>ORDER BY and AS: <a
+href="https://www.postgresql.org/docs/14/queries-order.html"
+class="uri">https://www.postgresql.org/docs/14/queries-order.html</a></p>
+<p>LIMIT and OFFSET: <a
+href="https://www.postgresql.org/docs/14/queries-limit.html"
+class="uri">https://www.postgresql.org/docs/14/queries-limit.html</a></p>
+</section>
+<section id="you-try-it-3" class="slide level2">
+<h2>You Try It!</h2>
+<ol type="1">
+<li class="fragment">Finish adding tables and data to the Music
+schema.</li>
+<li class="fragment">Write queries to answer the following
+questions:</li>
+</ol>
+<ul>
+<li class="fragment">What pitches were used in files where a clarinet
+was played?</li>
+<li class="fragment">What would each instrument cost if I got a 10%
+discount?</li>
+<li class="fragment">Which tone colors are visible?</li>
+<li class="fragment">What are the last three note pitches?</li>
+</ul>
+<ol start="3" type="1">
+<li class="fragment">Save all of these queries in a separate .sql file,
+which comments that explain what each one does.</li>
+<li class="fragment">When you finish, return to the other practice data
+sets.</li>
+</ol>
+</section></section>
     </div>
   </div>
 

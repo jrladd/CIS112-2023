@@ -250,3 +250,91 @@ UPDATE "cost" SET "price" = "price" * 100 RETURNING "price";
 
 As always, more in the [Postgres documentation](https://www.postgresql.org/docs/14/dml-returning.html).
 
+# Queries (DML)
+
+## ERDs are *essential* for queries.
+
+You need them for column names, but also for capitalization, combining different tables, etc.
+
+## SELECT is the command for **all** queries.
+
+In its simplest form, you can use it to do simple arithmetic or to get all rows from a table.
+
+```sql
+SELECT 5 * 9;
+```
+
+```sql
+SELECT * FROM "purchase";
+```
+
+```sql
+SELECT "item", "quantity" FROM "purchase";
+```
+
+## Perform arithmetic on columns and give them new names with AS.
+
+```sql
+SELECT "item", "quantity", "quantity" + 5 AS "updated_quantity" FROM "purchase";
+```
+
+## If the column isn't numeric (i.e. money or a date), you may have to **type cast** to avoid errors:
+
+```sql
+SELECT "item", "quantity", "quantity"::NUMERIC + 5 AS "updated_quantity" FROM "purchase";
+```
+
+Other forms of type casting:
+
+```
+"quantity"::NUMERIC::INTEGER
+CAST("quantity" AS NUMERIC)
+CAST(CAST("quantity" AS NUMERIC) AS INTEGER))
+```
+
+## Sort results with ORDER BY.
+
+```sql
+SELECT "item", "quantity" FROM "purchase" ORDER BY "item";
+```
+
+ORDER BY can also be used with arithmetic expressions and newly created columns!
+
+## Get specific rows with WHERE conditions.
+
+```sql
+SELECT "item", "date" FROM "purchase" WHERE "item" = 'Apple';
+```
+
+## Get a set number of rows with LIMIT.
+
+```sql
+SELECT * FROM "purchase" LIMIT 2;
+```
+
+Use OFFSET to start somewhere other than the beginning (which is row 0):
+
+```sql
+SELECT * FROM "purchase" LIMIT 2 OFFSET 1;
+```
+
+It's recommended to use LIMIT with ORDER BY always!
+
+## Remember, you can always refer back to the documentation:
+
+SELECT queries: <https://www.postgresql.org/docs/14/queries-overview.html>
+
+ORDER BY and AS: <https://www.postgresql.org/docs/14/queries-order.html>
+
+LIMIT and OFFSET: <https://www.postgresql.org/docs/14/queries-limit.html>
+
+## You Try It!
+
+1. Finish adding tables and data to the Music schema.
+2. Write queries to answer the following questions:
+- What pitches were used in files where a clarinet was played?
+- What would each instrument cost if I got a 10% discount?
+- Which tone colors are visible?
+- What are the last three note pitches?
+3. Save all of these queries in a separate .sql file, which comments that explain what each one does.
+4. When you finish, return to the other practice data sets.
