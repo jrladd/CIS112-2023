@@ -499,6 +499,67 @@ which comments that explain what each one does.</li>
 <li class="fragment">When you finish, return to the other practice data
 sets.</li>
 </ol>
+</section>
+<section id="aggregate-functions-let-you-calculate-based-on-columns."
+class="slide level2">
+<h2>Aggregate functions let you calculate based on columns.</h2>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="ot">&quot;item&quot;</span>) <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span>;</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(<span class="ot">&quot;price&quot;</span>:<span class="ch">:NUMERIC</span>) <span class="kw">FROM</span> <span class="ot">&quot;cost&quot;</span>;</span></code></pre></div>
+<p>Remember to add type casts as needed!</p>
+</section>
+<section id="key-aggregate-functions" class="slide level2">
+<h2>Key aggregate functions:</h2>
+<ul>
+<li class="fragment">COUNT()</li>
+<li class="fragment">AVG()</li>
+<li class="fragment">SUM()</li>
+<li class="fragment">MIN()</li>
+<li class="fragment">MAX()</li>
+</ul>
+<p>You can use the full list from the <a
+href="https://www.postgresql.org/docs/14/functions-aggregate.html">Postgres
+documentation</a>!</p>
+</section>
+<section id="use-distinct-to-work-with-unique-values."
+class="slide level2">
+<h2>Use DISTINCT to work with unique values.</h2>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> <span class="ot">&quot;item&quot;</span>) <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span>;</span></code></pre></div>
+</section>
+<section id="group-rows-to-summarize-your-table." class="slide level2">
+<h2>GROUP rows to summarize your table.</h2>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="ot">&quot;item&quot;</span>, <span class="fu">AVG</span>(<span class="ot">&quot;quantity&quot;</span>) <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">GROUP</span> <span class="kw">BY</span> <span class="ot">&quot;item&quot;</span>;</span></code></pre></div>
+<p>Use HAVING to limit groups.</p>
+<p><a
+href="https://www.postgresql.org/docs/14/queries-table-expressions.html#QUERIES-GROUP"
+class="uri">https://www.postgresql.org/docs/14/queries-table-expressions.html#QUERIES-GROUP</a></p>
+</section>
+<section id="subqueries-define-connections-between-tables."
+class="slide level2">
+<h2>Subqueries define connections between tables.</h2>
+<p>There are several expressions for subqueries in <a
+href="https://www.postgresql.org/docs/14/functions-subquery.html">the
+documentation</a>.</p>
+<p>Use foreign keys to guide you! This is ideal for <em>optional</em>
+relations.</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(<span class="ot">&quot;price&quot;</span>:<span class="ch">:NUMERIC</span>) <span class="kw">FROM</span> <span class="ot">&quot;cost&quot;</span> <span class="kw">WHERE</span> <span class="ot">&quot;item&quot;</span> <span class="kw">IN</span> (<span class="kw">SELECT</span> <span class="ot">&quot;item&quot;</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">WHERE</span> <span class="ot">&quot;quantity&quot;</span> <span class="op">&lt;</span> <span class="dv">3</span>);</span></code></pre></div>
+</section>
+<section id="you-try-it-4" class="slide level2">
+<h2>You try it!</h2>
+<p>Write queries to answer the following for the “music” schema:</p>
+<ol type="1">
+<li class="fragment">What is the average cost of all instruments?</li>
+<li class="fragment">What is the average cost of <em>each</em>
+instrument (since some have multiple manufacturers)?</li>
+<li class="fragment">What is the maximum frequency of pitch colors with
+a WvMin (for <em>color</em>) of less than 500?</li>
+<li class="fragment">How many individual instrument families are
+there?</li>
+</ol>
 </section></section>
     </div>
   </div>

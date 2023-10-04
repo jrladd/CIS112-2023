@@ -338,3 +338,58 @@ LIMIT and OFFSET: <https://www.postgresql.org/docs/14/queries-limit.html>
 - What are the last three note pitches?
 3. Save all of these queries in a separate .sql file, which comments that explain what each one does.
 4. When you finish, return to the other practice data sets.
+
+## Aggregate functions let you calculate based on columns.
+
+```sql
+SELECT COUNT("item") FROM "purchase";
+
+SELECT AVG("price"::NUMERIC) FROM "cost";
+```
+
+Remember to add type casts as needed!
+
+## Key aggregate functions:
+
+- COUNT()
+- AVG()
+- SUM()
+- MIN()
+- MAX()
+
+You can use the full list from the [Postgres documentation](https://www.postgresql.org/docs/14/functions-aggregate.html)!
+
+## Use DISTINCT to work with unique values.
+
+```sql
+SELECT COUNT(DISTINCT "item") FROM "purchase";
+```
+
+## GROUP rows to summarize your table.
+
+```sql
+SELECT "item", AVG("quantity") FROM "purchase" GROUP BY "item";
+```
+
+Use HAVING to limit groups.
+
+<https://www.postgresql.org/docs/14/queries-table-expressions.html#QUERIES-GROUP>
+
+## Subqueries define connections between tables.
+
+There are several expressions for subqueries in [the documentation](https://www.postgresql.org/docs/14/functions-subquery.html).
+
+Use foreign keys to guide you! This is ideal for *optional* relations.
+
+```sql
+SELECT AVG("price"::NUMERIC) FROM "cost" WHERE "item" IN (SELECT "item" FROM "purchase" WHERE "quantity" < 3);
+```
+
+## You try it!
+
+Write queries to answer the following for the "music" schema:
+
+1. What is the average cost of all instruments?
+2. What is the average cost of *each* instrument (since some have multiple manufacturers)?
+3. What is the maximum frequency of pitch colors with a WvMin (for *color*) of less than 500?
+4. How many individual instrument families are there?
