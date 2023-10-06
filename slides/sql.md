@@ -382,7 +382,9 @@ There are several expressions for subqueries in [the documentation](https://www.
 Use foreign keys to guide you! This is ideal for *optional* relations.
 
 ```sql
-SELECT AVG("price"::NUMERIC) FROM "cost" WHERE "item" IN (SELECT "item" FROM "purchase" WHERE "quantity" < 3);
+-- This should all be on one line in your .sql file
+SELECT AVG("price"::NUMERIC) FROM "cost" WHERE "item" 
+    IN (SELECT "item" FROM "purchase" WHERE "quantity" < 3);
 ```
 
 ## You try it!

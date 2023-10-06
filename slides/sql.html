@@ -546,7 +546,9 @@ documentation</a>.</p>
 <p>Use foreign keys to guide you! This is ideal for <em>optional</em>
 relations.</p>
 <div class="sourceCode" id="cb33"><pre
-class="sourceCode sql"><code class="sourceCode sql"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(<span class="ot">&quot;price&quot;</span>:<span class="ch">:NUMERIC</span>) <span class="kw">FROM</span> <span class="ot">&quot;cost&quot;</span> <span class="kw">WHERE</span> <span class="ot">&quot;item&quot;</span> <span class="kw">IN</span> (<span class="kw">SELECT</span> <span class="ot">&quot;item&quot;</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">WHERE</span> <span class="ot">&quot;quantity&quot;</span> <span class="op">&lt;</span> <span class="dv">3</span>);</span></code></pre></div>
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- This should all be on one line in your .sql file</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(<span class="ot">&quot;price&quot;</span>:<span class="ch">:NUMERIC</span>) <span class="kw">FROM</span> <span class="ot">&quot;cost&quot;</span> <span class="kw">WHERE</span> <span class="ot">&quot;item&quot;</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">IN</span> (<span class="kw">SELECT</span> <span class="ot">&quot;item&quot;</span> <span class="kw">FROM</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">WHERE</span> <span class="ot">&quot;quantity&quot;</span> <span class="op">&lt;</span> <span class="dv">3</span>);</span></code></pre></div>
 </section>
 <section id="you-try-it-4" class="slide level2">
 <h2>You try it!</h2>
