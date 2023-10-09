@@ -395,3 +395,54 @@ Write queries to answer the following for the "music" schema:
 2. What is the average cost of *each* instrument (since some have multiple manufacturers)?
 3. What is the maximum frequency of pitch colors with a WvMin (for *color*) of less than 500?
 4. How many individual instrument families are there?
+
+# Combine tables with JOIN
+
+## A JOIN combines results from 2 or more tables.
+
+The basics of JOIN syntax:
+
+<https://www.postgresql.org/docs/14/tutorial-join.html>
+
+Details on different JOIN statements:
+
+<https://www.postgresql.org/docs/14/queries-table-expressions.html#QUERIES-FROM>
+
+## INNER JOINs only return rows that exist in *both* tables.
+
+Consider the inner part of a venn diagram. Only the overlapping part is returned.
+
+Let's try to make venn diagrams for LEFT, RIGHT, and FULL OUTER JOINs.
+
+## INNER JOIN is the default.
+
+```sql
+SELECT * FROM "cost" JOIN "purchase" ON "cost"."item" = "purchase"."item";
+```
+
+Match foreign keys with ON or with USING.
+
+```sql
+--Using needs parentheses and eliminates duplicates
+SELECT * FROM "cost" JOIN "purchase" USING ("item");
+```
+
+## Use Aliases to simplify your statements.
+
+```sql
+SELECT c."item", c."price", p."date"
+    FROM "cost" AS c JOIN "purchase" AS p ON c."item" = p."item";
+```
+
+You can do this without AS, too.
+
+```sql
+SELECT c."item", c."price", p."date"
+    FROM "cost" c JOIN "purchase" p ON c."item" = p."item";
+```
+
+## You Try It!
+
+1. Find the dynamic, MIDI, and frequency for every pitch.
+2. Get the average cost for each family of instrument.
+3. Get WvMin and WvMax values for **both** pitch and color.

@@ -563,6 +563,62 @@ a WvMin (for <em>color</em>) of less than 500?</li>
 there?</li>
 </ol>
 </section></section>
+<section>
+<section id="combine-tables-with-join" class="title-slide slide level1">
+<h1>Combine tables with JOIN</h1>
+
+</section>
+<section id="a-join-combines-results-from-2-or-more-tables."
+class="slide level2">
+<h2>A JOIN combines results from 2 or more tables.</h2>
+<p>The basics of JOIN syntax:</p>
+<p><a href="https://www.postgresql.org/docs/14/tutorial-join.html"
+class="uri">https://www.postgresql.org/docs/14/tutorial-join.html</a></p>
+<p>Details on different JOIN statements:</p>
+<p><a
+href="https://www.postgresql.org/docs/14/queries-table-expressions.html#QUERIES-FROM"
+class="uri">https://www.postgresql.org/docs/14/queries-table-expressions.html#QUERIES-FROM</a></p>
+</section>
+<section id="inner-joins-only-return-rows-that-exist-in-both-tables."
+class="slide level2">
+<h2>INNER JOINs only return rows that exist in <em>both</em>
+tables.</h2>
+<p>Consider the inner part of a venn diagram. Only the overlapping part
+is returned.</p>
+<p>Let’s try to make venn diagrams for LEFT, RIGHT, and FULL OUTER
+JOINs.</p>
+</section>
+<section id="inner-join-is-the-default." class="slide level2">
+<h2>INNER JOIN is the default.</h2>
+<div class="sourceCode" id="cb34"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="ot">&quot;cost&quot;</span> <span class="kw">JOIN</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">ON</span> <span class="ot">&quot;cost&quot;</span>.<span class="ot">&quot;item&quot;</span> <span class="op">=</span> <span class="ot">&quot;purchase&quot;</span>.<span class="ot">&quot;item&quot;</span>;</span></code></pre></div>
+<p>Match foreign keys with ON or with USING.</p>
+<div class="sourceCode" id="cb35"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">--Using needs parentheses and eliminates duplicates</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> <span class="ot">&quot;cost&quot;</span> <span class="kw">JOIN</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">USING</span> (<span class="ot">&quot;item&quot;</span>);</span></code></pre></div>
+</section>
+<section id="use-aliases-to-simplify-your-statements."
+class="slide level2">
+<h2>Use Aliases to simplify your statements.</h2>
+<div class="sourceCode" id="cb36"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> c.<span class="ot">&quot;item&quot;</span>, c.<span class="ot">&quot;price&quot;</span>, p.<span class="ot">&quot;date&quot;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> <span class="ot">&quot;cost&quot;</span> <span class="kw">AS</span> c <span class="kw">JOIN</span> <span class="ot">&quot;purchase&quot;</span> <span class="kw">AS</span> p <span class="kw">ON</span> c.<span class="ot">&quot;item&quot;</span> <span class="op">=</span> p.<span class="ot">&quot;item&quot;</span>;</span></code></pre></div>
+<p>You can do this without AS, too.</p>
+<div class="sourceCode" id="cb37"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> c.<span class="ot">&quot;item&quot;</span>, c.<span class="ot">&quot;price&quot;</span>, p.<span class="ot">&quot;date&quot;</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> <span class="ot">&quot;cost&quot;</span> c <span class="kw">JOIN</span> <span class="ot">&quot;purchase&quot;</span> p <span class="kw">ON</span> c.<span class="ot">&quot;item&quot;</span> <span class="op">=</span> p.<span class="ot">&quot;item&quot;</span>;</span></code></pre></div>
+</section>
+<section id="you-try-it-5" class="slide level2">
+<h2>You Try It!</h2>
+<ol type="1">
+<li class="fragment">Find the dynamic, MIDI, and frequency for every
+pitch.</li>
+<li class="fragment">Get the average cost for each family of
+instrument.</li>
+<li class="fragment">Get WvMin and WvMax values for
+<strong>both</strong> pitch and color.</li>
+</ol>
+</section></section>
     </div>
   </div>
 
