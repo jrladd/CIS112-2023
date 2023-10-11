@@ -446,3 +446,22 @@ SELECT c."item", c."price", p."date"
 1. Find the dynamic, MIDI, and frequency for every pitch.
 2. Get the average cost for each family of instrument.
 3. Get WvMin and WvMax values for **both** pitch and color.
+
+## OUTER JOIN resources
+
+- Postgres documentation: <https://www.postgresql.org/docs/14/queries-table-expressions.html#QUERIES-FROM>
+- JOIN tutorial: <https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-joins/>
+
+## You Try It: Practicing JOINS
+
+1. Make a list of all instruments, their families, and their cost (even if there's no cost listed).
+2. Get the average frequency played by each instrument.
+3. Create a table showing all colors with their pitch, their visibility, and whether they were played on piano. The table should show pitches that don't have colors and vice versa.
+4. Show the files and pitches in which pitches were played with a frequency greater than 210, and show any of those pitches that were not played in files.
+
+## Practicing JOINS (cont.)
+
+1. Get the names, ages, games, and star ratings for every spy who playtested a game and every spy who didn't playtest.
+2. List the platform for every game played by Jason Bourne.
+3. Which spies played their games for more than one hour?
+4. Create a table of all games, the year they came out, all spies, and their ages, whether or not a spy playtested a game or a game was playtested at all.
