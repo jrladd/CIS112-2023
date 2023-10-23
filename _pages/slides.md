@@ -11,3 +11,6 @@ permalink: /slides/
 # Resources
 
 [Login to Postgres](/CIS112/login)
+[Transactions in Postgres](https://www.postgresql.org/docs/current/tutorial-transactions.html)
+[ACID Transactions](https://www.databricks.com/glossary/acid-transactions)
+[Transactions in different DBMSs](https://docs.digitalocean.com/glossary/acid/)
