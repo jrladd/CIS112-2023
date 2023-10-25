@@ -5,7 +5,7 @@ classes: wide
 ---
 In this activity, which you will work on during class time today and on Friday, you'll design the database for one of the major companies which use PostgreSQL today!
 
-Your group will be assigned on of the following companites: Netflix, IMDb, Spotify, Twitch, Instagram, Reddit
+Your group will be assigned one of the following companies: Netflix, IMDb, Spotify, Twitch, Instagram, Reddit
 
 With your group, develop 3 user personas for the company you have chosen; think about the following questions when developing your personas / researching the company:
 
