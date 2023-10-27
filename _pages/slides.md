@@ -25,3 +25,4 @@ permalink: /slides/
 - [How to Create a User Persona](https://mailchimp.com/resources/how-to-create-a-user-persona-ux/)
 - [Database Types](/CIS112/assets/dbTypes.pdf)
 - [Design a Database Activity](/CIS112/design)
+- [Use Case Diagrams](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/)
