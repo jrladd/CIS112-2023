@@ -26,3 +26,5 @@ permalink: /slides/
 - [Database Types](/CIS112/assets/dbTypes.pdf)
 - [Design a Database Activity](/CIS112/design)
 - [Use Case Diagrams](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/)
+- [User Interface](https://e115.engr.ncsu.edu/operating-systems/user-interface/)
+- [What is pgAdmin?](https://www.adservio.fr/post/what-is-pgadmin)
