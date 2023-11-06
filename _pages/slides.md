@@ -28,3 +28,9 @@ permalink: /slides/
 - [Use Case Diagrams](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/)
 - [User Interface](https://e115.engr.ncsu.edu/operating-systems/user-interface/)
 - [What is pgAdmin?](https://www.adservio.fr/post/what-is-pgadmin)
+
+## Functions
+
+- [User-defined FUNCTIONs](https://www.postgresql.org/docs/14/xfunc.html)
+- [CREATE FUNCTION syntax](https://www.postgresql.org/docs/14/sql-createfunction.html)
+- [PL/pgSQL functions](https://www.postgresql.org/docs/14/plpgsql-structure.html)
