@@ -11,10 +11,10 @@ On this page you'll find prompts for the different assignments in our course (po
 
 Assignment|Percentage
 ---|--
-Project 1|10%
+Project 1|15%
 Project 2|15%
-Project 3|25%
-Exams|30%
-Quizzes|10%
-Participation|10%
+Final Project|20%
+Exams 1 & 2|15%
+Final Exam|20%
+Quizzes|15%
 
