@@ -34,3 +34,5 @@ permalink: /slides/
 - [User-defined FUNCTIONs](https://www.postgresql.org/docs/14/xfunc.html)
 - [CREATE FUNCTION syntax](https://www.postgresql.org/docs/14/sql-createfunction.html)
 - [PL/pgSQL functions](https://www.postgresql.org/docs/14/plpgsql-structure.html)
+- [Declaring Variables](https://www.postgresql.org/docs/14/plpgsql-declarations.html)
+- [Declaring & Initializing](https://www.commandprompt.com/education/how-to-declare-a-variable-in-postgresql/)
